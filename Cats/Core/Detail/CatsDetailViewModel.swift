@@ -10,6 +10,7 @@ import Combine
 
 final class CatsDetailViewModel: ObservableObject {
     @Published var state: CatsDetailViewState = .loading
+    @Published var saved: Bool = false
     let coreDataStore = CoreDataStore.shared
     private var bag = Set<AnyCancellable>()
     public init(cat: Cat) {
@@ -33,6 +34,7 @@ final class CatsDetailViewModel: ObservableObject {
     }
     
     public func save(_ cat: Cat) {
+        guard !saved else { return }
         let action: (()->()) = {
             let catDB: CatDB = self.coreDataStore.createEntity()
             catDB.id = cat.id
@@ -74,7 +76,7 @@ final class CatsDetailViewModel: ObservableObject {
             } receiveValue: {
                 switch $0 {
                 case true:
-                    break
+                    self.saved = true
                 case false:
                     print("DB error")
                 }

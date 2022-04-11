@@ -54,9 +54,13 @@ struct CatsDetail: View {
                         Text("Photo: \(cat.width)x\(cat.height)")
                     } .id(UUID())
                 } .toolbar {
-                    Button("Save to offline") {
+                    Button {
                         viewModel.save(cat)
+                    } label: {
+                        Text("Save to offline")
+                            .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
                     }
+
                 }
             }
         case .loading:

@@ -49,6 +49,7 @@ final class CatsFavoriteViewModel: ObservableObject {
                 print("All deleted")
             }
             .store(in: &bag)
+        fetchCats()
     }
     enum CatsFavoriteViewState {
         case empty, loading, loaded([CatDB]), error(String)

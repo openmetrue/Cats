@@ -23,7 +23,8 @@ struct CatsFavorite: View {
                         ScrollView {
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 3)) {
                                 ForEach(catsDB, id: \.id) { cat in
-                                    AsyncImageCached(url: URL(string: cat.url!), content: { image in
+                                    NavigationLink(destination: CatsFavoriteDetail(cat: cat)) {
+                                        AsyncImageCached(url: URL(string: cat.url!), content: { image in
                                             image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
@@ -34,28 +35,7 @@ struct CatsFavorite: View {
                                             Spinner()
                                                 .frame(width: geometry.size.width / 3 - 15, height: geometry.size.width / 3 - 15, alignment: .center)
                                         })
-                                    Text("Cat's ID: \(cat.id)")
-                                    if let categories = cat.categories {
-                                        Section(header: Text("Category")) {
-                                            ForEach(categories, id: \.id) { category in
-                                                Text(category.name)
-                                            }
-                                        }
                                     }
-                                    if let breeds = cat.breeds,
-                                        breeds != [] {
-                                        Section(header: Text("Breed")) {
-                                            ForEach(breeds, id: \.id) { breed in
-                                                if let name = breed.name {
-                                                    Text("\(name)")
-                                                }
-                                                if let breedDescription = breed.breedDescription {
-                                                    Text("\(breedDescription)")
-                                                }
-                                            }
-                                        }
-                                    }
-                                    Text("Photo: \(cat.width)x\(cat.height)")
                                 }
                             } .padding(.horizontal)
                         } .toolbar {

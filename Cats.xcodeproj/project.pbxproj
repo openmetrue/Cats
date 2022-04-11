@@ -27,6 +27,7 @@
 		B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71F28031F9E00ED19C3 /* ContentView.swift */; };
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
+		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B4C62684280402DF0060C77D /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62683280402DF0060C77D /* AsyncImageCached.swift */; };
 		B4C626872804064A0060C77D /* AsyncImageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C626862804064A0060C77D /* AsyncImageError.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
@@ -55,6 +56,7 @@
 		B414E71F28031F9E00ED19C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B414E7272803421000ED19C3 /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
 		B414E7292803551600ED19C3 /* BreedesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedesModel.swift; sourceTree = "<group>"; };
+		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B4C62683280402DF0060C77D /* AsyncImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
 		B4C626862804064A0060C77D /* AsyncImageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageError.swift; sourceTree = "<group>"; };
 		B4C6268D280456430060C77D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				B414E6FF280313F600ED19C3 /* CatsFavorite.swift */,
+				B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */,
 				B414E70928031B5900ED19C3 /* CatsFavoriteViewModel.swift */,
 			);
 			path = Favorite;
@@ -290,6 +293,7 @@
 				B414E71828031CA600ED19C3 /* CoreDataSave.swift in Sources */,
 				B4D662752803FE210085AA8C /* ImageCache.swift in Sources */,
 				B414E71528031C6E00ED19C3 /* CoreDataStore.swift in Sources */,
+				B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */,
 				B414E706280318A200ED19C3 /* CatsViewModel.swift in Sources */,
 				B414E6E828030B4800ED19C3 /* CatsApp.swift in Sources */,
 				B4C62684280402DF0060C77D /* AsyncImageCached.swift in Sources */,
