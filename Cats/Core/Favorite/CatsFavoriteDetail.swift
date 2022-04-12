@@ -11,17 +11,23 @@ struct CatsFavoriteDetail: View {
     let cat: CatDB
     var body: some View {
         VStack {
-            AsyncImageCached(url: URL(string: cat.url!)) { image in
+            if let imagebase64 = cat.image,
+               let data = Data(base64Encoded: imagebase64),
+               let uiimage = UIImage(data: data),
+               let image = Image(uiImage: uiimage) {
                 image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .cornerRadius(10)
-                    .clipped()
-            } placeholder: {
-                Spinner()
-            }.padding()
+                    .centerCropped()
+            } else {
+                AsyncImageCached(url: URL(string: cat.url!)) { image in
+                    image
+                        .centerCropped()
+                } placeholder: {
+                    Spinner()
+                }.padding()
+            }
             List {
                 Text("Cat's ID: \(cat.id!)")
+                Text("Photo: \(cat.width)x\(cat.height)")
                 if let categories = cat.categoryDB,
                    categories != [] {
                     Section(header: Text("Category")) {
@@ -43,7 +49,6 @@ struct CatsFavoriteDetail: View {
                         }
                     }
                 }
-                Text("Photo: \(cat.width)x\(cat.height)")
             } .id(UUID())
         }
     }

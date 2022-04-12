@@ -9,6 +9,7 @@
     <entity name="CatDB" representedClassName="CatDB" syncable="YES" codeGenerationType="class">
         <attribute name="height" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="url" attributeType="String"/>
         <attribute name="width" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="breedDB" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BreedDB" inverseName="ownCat" inverseEntity="BreedDB"/>
@@ -20,8 +21,8 @@
         <relationship name="ownCat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CatDB" inverseName="categoryDB" inverseEntity="CatDB"/>
     </entity>
     <elements>
-        <element name="CatDB" positionX="-348.90625" positionY="-318.78125" width="128" height="133"/>
         <element name="BreedDB" positionX="-438.66015625" positionY="-133.54296875" width="128" height="103"/>
+        <element name="CatDB" positionX="-348.90625" positionY="-318.78125" width="128" height="134"/>
         <element name="CategoryDB" positionX="-298.828125" positionY="-131.078125" width="128" height="88"/>
     </elements>
 </model>

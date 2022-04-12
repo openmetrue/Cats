@@ -7,11 +7,12 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 final class CatsDetailViewModel: ObservableObject {
-    @Published var state: CatsDetailViewState = .loading
-    @Published var saved: Bool = false
-    let coreDataStore = CoreDataStore.shared
+    @Published private(set) var state: CatsDetailViewState = .loading
+    @Published private(set) var saved: Bool = false
+    private let coreDataStore = CoreDataStore.shared
     private var bag = Set<AnyCancellable>()
     public init(cat: Cat) {
         self.state = .loaded(cat)
@@ -33,7 +34,7 @@ final class CatsDetailViewModel: ObservableObject {
         }).store(in: &bag)
     }
     
-    public func save(_ cat: Cat) {
+    public func save(_ cat: Cat, image: Image) {
         guard !saved else { return }
         let action: (()->()) = {
             let catDB: CatDB = self.coreDataStore.createEntity()
@@ -41,7 +42,7 @@ final class CatsDetailViewModel: ObservableObject {
             catDB.url = cat.url
             catDB.width = Int64(cat.width)
             catDB.height = Int64(cat.height)
-    
+            catDB.image = image.asUIImage().pngData()?.base64EncodedString()
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {
                 let breedDB: BreedDB = self.coreDataStore.createEntity()

@@ -10,8 +10,8 @@ import CoreData
 import Combine
 
 final class CatsFavoriteViewModel: ObservableObject {
-    @Published var state: CatsFavoriteViewState = .loading
-    let coreDataStore = CoreDataStore.shared
+    @Published private(set) var state: CatsFavoriteViewState = .loading
+    private let coreDataStore = CoreDataStore.shared
     private var bag = Set<AnyCancellable>()
     
     public func fetchCats() {
@@ -30,7 +30,7 @@ final class CatsFavoriteViewModel: ObservableObject {
                     }
                 }
             } receiveValue: {
-                self.state = $0.isEmpty ? .empty : .loaded($0)
+                self.state = .loaded($0)
             }
             .store(in: &bag)
     }

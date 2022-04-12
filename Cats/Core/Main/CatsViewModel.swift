@@ -9,12 +9,14 @@ import Foundation
 import Combine
 
 final class CatsMainViewModel: ObservableObject {
-    @Published var state: CatsMainViewState = .all
+    @Published private(set) var state: CatsMainViewState = .loading
     @Published private(set) var cats: [Cat] = []
     @Published private(set) var breeds: [Breedes] = []
     @Published var searchText = ""
-    @Published var page = 0
-    let limit = 20
+    public let restOfCellsBeforeFetch = 10
+    private let limit = 40
+    private var page = 0
+    public let loadMoreSubject = PassthroughSubject<Void, Never>()
     private var bag = Set<AnyCancellable>()
     init() {
         setUpFetching()
@@ -62,7 +64,7 @@ final class CatsMainViewModel: ObservableObject {
         }).store(in: &bag)
     }
     enum CatsMainViewState {
-        case search, all, error(String)
+        case loading, search, all, error(String)
     }
 }
 

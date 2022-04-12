@@ -24,23 +24,32 @@ struct CatsFavorite: View {
                             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 5), count: 3)) {
                                 ForEach(catsDB, id: \.id) { cat in
                                     NavigationLink(destination: CatsFavoriteDetail(cat: cat)) {
-                                        AsyncImageCached(url: URL(string: cat.url!), content: { image in
+                                        if let imagebase64 = cat.image,
+                                           let data = Data(base64Encoded: imagebase64),
+                                           let uiimage = UIImage(data: data),
+                                           let image = Image(uiImage: uiimage) {
                                             image
                                                 .resizable()
                                                 .aspectRatio(contentMode: .fill)
                                                 .frame(width: geometry.size.width / 3 - 15, height: geometry.size.width / 3 - 15, alignment: .center)
-                                                .cornerRadius(3)
-                                                .clipped()
-                                        }, placeholder: {
-                                            Spinner()
-                                                .frame(width: geometry.size.width / 3 - 15, height: geometry.size.width / 3 - 15, alignment: .center)
-                                        })
+                                        } else {
+                                            AsyncImageCached(url: URL(string: cat.url!)) { image in
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: geometry.size.width / 3 - 15, height: geometry.size.width / 3 - 15, alignment: .center)
+                                            } placeholder: {
+                                                Spinner()
+                                            }.padding()
+                                        }
                                     }
                                 }
                             } .padding(.horizontal)
                         } .toolbar {
-                            Button("Delete saved") {
+                            Button {
                                 viewModel.deleteAll()
+                            } label: {
+                                Text("Empty saved")
                             }
                         }
                     case .error(let error):

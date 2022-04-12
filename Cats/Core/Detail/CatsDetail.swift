@@ -21,16 +21,21 @@ struct CatsDetail: View {
             Group {
                 VStack {
                     AsyncImageCached(url: URL(string: cat.url)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(10)
-                            .clipped()
+                        image.centerCropped()
+                            .toolbar {
+                                Button {
+                                    viewModel.save(cat, image: image)
+                                } label: {
+                                    Text("Save to offline")
+                                        .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
+                                }
+                            }
                     } placeholder: {
                         Spinner()
                     }.padding()
                     List {
                         Text("Cat's ID: \(cat.id)")
+                        Text("Photo: \(cat.width)x\(cat.height)")
                         if let categories = cat.categories {
                             Section(header: Text("Category")) {
                                 ForEach(categories, id: \.id) { category in
@@ -51,16 +56,7 @@ struct CatsDetail: View {
                                 }
                             }
                         }
-                        Text("Photo: \(cat.width)x\(cat.height)")
                     } .id(UUID())
-                } .toolbar {
-                    Button {
-                        viewModel.save(cat)
-                    } label: {
-                        Text("Save to offline")
-                            .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
-                    }
-
                 }
             }
         case .loading:
