@@ -11,14 +11,13 @@ struct CatsFavoriteDetail: View {
     let cat: CatDB
     var body: some View {
         VStack {
-            if let imagebase64 = cat.image,
-               let data = Data(base64Encoded: imagebase64),
-               let uiimage = UIImage(data: data),
+            if let imageData = cat.image,
+               let uiimage = UIImage(data: imageData),
                let image = Image(uiImage: uiimage) {
                 image
                     .centerCropped()
             } else {
-                AsyncImageCached(url: URL(string: cat.url!)) { image in
+                AsyncImage(url: URL(string: cat.url!)) { image in
                     image
                         .centerCropped()
                 } placeholder: {

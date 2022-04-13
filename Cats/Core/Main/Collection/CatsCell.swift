@@ -13,7 +13,7 @@ struct CatsCell: View {
         NavigationLink {
             CatsDetail(cat: item)
         } label: {
-            AsyncImageCached(url: URL(string: item.url)) { image in
+            AsyncImage(url: URL(string: item.url)) { image in
                 image.centerCropped()
             } placeholder: {
                 Spinner()

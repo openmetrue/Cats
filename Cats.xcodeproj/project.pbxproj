@@ -29,15 +29,12 @@
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
-		B4C62684280402DF0060C77D /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62683280402DF0060C77D /* AsyncImageCached.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
-		B4D662752803FE210085AA8C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D662742803FE210085AA8C /* ImageCache.swift */; };
 		B4E910612805B080009B8350 /* CollectionViewEmbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910602805B080009B8350 /* CollectionViewEmbed.swift */; };
 		B4E910632805B0EB009B8350 /* CatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910622805B0EB009B8350 /* CatsCell.swift */; };
 		B4E910652805B1C6009B8350 /* CatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910642805B1C6009B8350 /* CatsCollection.swift */; };
 		B4E910672805B22C009B8350 /* CatsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910662805B22C009B8350 /* CatsCollectionViewController.swift */; };
 		B4E9106F2805EA81009B8350 /* Image+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E9106E2805EA81009B8350 /* Image+ext.swift */; };
-		B4E910722805F269009B8350 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910712805F269009B8350 /* View+ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,15 +72,12 @@
 		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
-		B4C62683280402DF0060C77D /* AsyncImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
 		B4C6268D280456430060C77D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		B4D662742803FE210085AA8C /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		B4E910602805B080009B8350 /* CollectionViewEmbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEmbed.swift; sourceTree = "<group>"; };
 		B4E910622805B0EB009B8350 /* CatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsCell.swift; sourceTree = "<group>"; };
 		B4E910642805B1C6009B8350 /* CatsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsCollection.swift; sourceTree = "<group>"; };
 		B4E910662805B22C009B8350 /* CatsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsCollectionViewController.swift; sourceTree = "<group>"; };
 		B4E9106E2805EA81009B8350 /* Image+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+ext.swift"; sourceTree = "<group>"; };
-		B4E910712805F269009B8350 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,7 +191,6 @@
 		B414E70C28031BCE00ED19C3 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				B4C626852804030C0060C77D /* Image */,
 				B414E71328031C3B00ED19C3 /* Network */,
 				B414E71628031C7300ED19C3 /* Storage */,
 			);
@@ -234,15 +227,6 @@
 			path = CatsTests;
 			sourceTree = "<group>";
 		};
-		B4C626852804030C0060C77D /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				B4C62683280402DF0060C77D /* AsyncImageCached.swift */,
-				B4D662742803FE210085AA8C /* ImageCache.swift */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
 		B4C626882804072F0060C77D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				B4E9106E2805EA81009B8350 /* Image+ext.swift */,
-				B4E910712805F269009B8350 /* View+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -383,19 +366,16 @@
 				B4E910652805B1C6009B8350 /* CatsCollection.swift in Sources */,
 				B414E70E28031BF100ED19C3 /* Agent.swift in Sources */,
 				B414E70A28031B5900ED19C3 /* CatsFavoriteViewModel.swift in Sources */,
-				B4E910722805F269009B8350 /* View+ext.swift in Sources */,
 				B414E6FE280313E000ED19C3 /* CatsDetail.swift in Sources */,
 				B414E71C28031CED00ED19C3 /* CoreDataDelete.swift in Sources */,
 				B414E71A28031CC500ED19C3 /* CoreDataFetch.swift in Sources */,
 				B4E910632805B0EB009B8350 /* CatsCell.swift in Sources */,
 				B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */,
 				B414E71828031CA600ED19C3 /* CoreDataSave.swift in Sources */,
-				B4D662752803FE210085AA8C /* ImageCache.swift in Sources */,
 				B414E71528031C6E00ED19C3 /* CoreDataStore.swift in Sources */,
 				B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */,
 				B414E706280318A200ED19C3 /* CatsViewModel.swift in Sources */,
 				B414E6E828030B4800ED19C3 /* CatsApp.swift in Sources */,
-				B4C62684280402DF0060C77D /* AsyncImageCached.swift in Sources */,
 				B4E910612805B080009B8350 /* CollectionViewEmbed.swift in Sources */,
 				B414E71228031C0300ED19C3 /* AgentError.swift in Sources */,
 				B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */,

@@ -34,15 +34,24 @@ final class CatsDetailViewModel: ObservableObject {
         }).store(in: &bag)
     }
     
-    public func save(_ cat: Cat, image: Image) {
+    public func save(_ cat: Cat) {
         guard !saved else { return }
         let action: (()->()) = {
             let catDB: CatDB = self.coreDataStore.createEntity()
+            catDB.unicID = UUID()
             catDB.id = cat.id
             catDB.url = cat.url
             catDB.width = Int64(cat.width)
             catDB.height = Int64(cat.height)
-            catDB.image = image.asUIImage().pngData()?.base64EncodedString()
+            
+            //if let uiImage = self.cache[URL(string: cat.url)!] {
+            //    catDB.image = uiImage.jpegData(compressionQuality: 1)
+            //    print("saved from cache")
+            // }
+            //else {
+            catDB.image = try? Data(contentsOf: URL(string: cat.url)!)
+            print("saved from web")
+            //}
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {
                 let breedDB: BreedDB = self.coreDataStore.createEntity()
