@@ -16,13 +16,6 @@ struct CatsFavoriteDetail: View {
                let image = Image(uiImage: uiimage) {
                 image
                     .centerCropped()
-            } else {
-                AsyncImage(url: URL(string: cat.url!)) { image in
-                    image
-                        .centerCropped()
-                } placeholder: {
-                    Spinner()
-                }.padding()
             }
             List {
                 Text("Cat's ID: \(cat.id!)")

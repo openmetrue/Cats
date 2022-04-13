@@ -31,16 +31,6 @@ struct CatsFavorite: View {
                                             .aspectRatio(contentMode: .fill)
                                             .frame(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3, alignment: .center)
                                             .clipped()
-                                    } else {
-                                        AsyncImage(url: URL(string: cat.url!)) { image in
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3, alignment: .center)
-                                                .clipped()
-                                        } placeholder: {
-                                            Spinner()
-                                        }
                                     }
                                 }
                             }

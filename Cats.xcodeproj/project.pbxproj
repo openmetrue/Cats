@@ -27,6 +27,7 @@
 		B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71F28031F9E00ED19C3 /* ContentView.swift */; };
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
+		B42222002806A1AA00BBEF85 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B42221FF2806A1AA00BBEF85 /* NukeUI */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
@@ -85,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B42222002806A1AA00BBEF85 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +273,7 @@
 			);
 			name = Cats;
 			packageProductDependencies = (
+				B42221FF2806A1AA00BBEF85 /* NukeUI */,
 			);
 			productName = Cats;
 			productReference = B414E6E428030B4800ED19C3 /* Cats.app */;
@@ -323,6 +326,7 @@
 			);
 			mainGroup = B414E6DB28030B4800ED19C3;
 			packageReferences = (
+				B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = B414E6E528030B4800ED19C3 /* Products */;
 			projectDirPath = "";
@@ -648,6 +652,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B42221FF2806A1AA00BBEF85 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B4C6268C280456430060C77D /* Model.xcdatamodeld */ = {

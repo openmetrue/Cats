@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct CatsDetail: View {
     @ObservedObject var viewModel: CatsDetailViewModel
@@ -21,10 +22,16 @@ struct CatsDetail: View {
             Group {
                 ZStack {
                     VStack {
-                        AsyncImage(url: URL(string: cat.url)) { image in
-                            image.centerCropped()
-                        } placeholder: {
-                            Spinner()
+                        LazyImage(source:  URL(string: cat.url)) { state in
+                            if let image = state.image {
+                                image
+                                    .scaledToFill()
+                                    .clipped()
+                            } else if state.error != nil {
+                                Color.clear// Indicates an error.
+                            } else {
+                                Spinner()
+                            }
                         }.padding()
                         List {
                             Text("Cat's ID: \(cat.id)")
