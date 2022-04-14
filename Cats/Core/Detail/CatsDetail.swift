@@ -22,17 +22,12 @@ struct CatsDetail: View {
             Group {
                 ZStack {
                     VStack {
-                        LazyImage(source:  URL(string: cat.url)) { state in
-                            if let image = state.image {
-                                image
-                                    .scaledToFill()
-                                    .clipped()
-                            } else if state.error != nil {
-                                Color.clear// Indicates an error.
-                            } else {
-                                Spinner()
-                            }
-                        }.padding()
+                        AsyncImage(url: URL(string: cat.url)) { image in
+                            image
+                                .centerCropped()
+                        } placeholder: {
+                            ProgressView()
+                        }
                         List {
                             Text("Cat's ID: \(cat.id)")
                             Text("Photo: \(cat.width)x\(cat.height)")
@@ -68,7 +63,7 @@ struct CatsDetail: View {
                 }
             }
         case .loading:
-            Spinner()
+            ProgressView()
         case .error(let error):
             Text(error)
         }

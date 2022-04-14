@@ -12,13 +12,12 @@ import SwiftUI
 final class CatsDetailViewModel: ObservableObject {
     @Published private(set) var state: CatsDetailViewState = .loading
     @Published private(set) var saved: Bool = false
-    private let coreDataStore = CoreDataStore.shared
     private var bag = Set<AnyCancellable>()
     public init(cat: Cat) {
         self.state = .loaded(cat)
     }
     public init(breed: Breedes) {
-        self.loadCat(id: breed.referenceImageID ?? "hBXicehMA")
+        loadCat(id: breed.referenceImageID ?? "hBXicehMA")
     }
     
     public func loadCat(id: String) {
@@ -36,8 +35,8 @@ final class CatsDetailViewModel: ObservableObject {
     
     public func save(_ cat: Cat) {
         guard !saved else { return }
-        let action: (()->()) = {
-            let catDB: CatDB = self.coreDataStore.createEntity()
+        let action: (() -> Void) = {
+            let catDB: CatDB = CDAPI.createEntity()
             catDB.unicID = UUID()
             catDB.id = cat.id
             catDB.url = cat.url
@@ -54,7 +53,7 @@ final class CatsDetailViewModel: ObservableObject {
             //}
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {
-                let breedDB: BreedDB = self.coreDataStore.createEntity()
+                let breedDB: BreedDB = CDAPI.createEntity()
                 breedDB.id = breed.id
                 breedDB.name = breed.name
                 breedDB.breedDescription = breed.breedDescription
@@ -64,7 +63,7 @@ final class CatsDetailViewModel: ObservableObject {
             var categoriesDB: [CategoryDB] = []
             if let categories = cat.categories {
                 for category in categories {
-                    let categoryDB: CategoryDB = self.coreDataStore.createEntity()
+                    let categoryDB: CategoryDB = CDAPI.createEntity()
                     categoryDB.id = Int64(category.id)
                     categoryDB.name = category.name
                     categoriesDB.append(categoryDB)
@@ -74,7 +73,7 @@ final class CatsDetailViewModel: ObservableObject {
             catDB.breedDB = NSSet(array: breedsDB)
             catDB.categoryDB = NSSet(array: categoriesDB)
         }
-        coreDataStore
+        CDAPI
             .publicher(save: action)
             .sink {
                 switch $0 {

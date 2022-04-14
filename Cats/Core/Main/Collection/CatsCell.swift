@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import NukeUI
 
 struct CatsCell: View {
     var item: Cat
@@ -14,16 +13,11 @@ struct CatsCell: View {
         NavigationLink {
             CatsDetail(cat: item)
         } label: {
-            LazyImage(source:  URL(string: item.url)) { state in
-                if let image = state.image {
-                    image
-                        .scaledToFill()
-                        .clipped()
-                } else if state.error != nil {
-                    Color.clear// Indicates an error.
-                } else {
-                    Spinner()
-                }
+            AsyncImage(url: URL(string: item.url)) { image in
+                image
+                    .centerCropped()
+            } placeholder: {
+                ProgressView()
             }
         }
     }

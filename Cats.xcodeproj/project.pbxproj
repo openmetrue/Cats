@@ -23,14 +23,15 @@
 		B414E71828031CA600ED19C3 /* CoreDataSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71728031CA600ED19C3 /* CoreDataSave.swift */; };
 		B414E71A28031CC500ED19C3 /* CoreDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71928031CC500ED19C3 /* CoreDataFetch.swift */; };
 		B414E71C28031CED00ED19C3 /* CoreDataDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71B28031CED00ED19C3 /* CoreDataDelete.swift */; };
-		B414E71E28031D5E00ED19C3 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71D28031D5E00ED19C3 /* Spinner.swift */; };
 		B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71F28031F9E00ED19C3 /* ContentView.swift */; };
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
-		B42222002806A1AA00BBEF85 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B42221FF2806A1AA00BBEF85 /* NukeUI */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
+		B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C25280832C900105FCC /* CoreDataAPI.swift */; };
+		B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C272808388500105FCC /* AsyncImageCached.swift */; };
+		B4C62C2B28085A0000105FCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4C62C2A28085A0000105FCC /* LaunchScreen.storyboard */; };
 		B4E910612805B080009B8350 /* CollectionViewEmbed.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910602805B080009B8350 /* CollectionViewEmbed.swift */; };
 		B4E910632805B0EB009B8350 /* CatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910622805B0EB009B8350 /* CatsCell.swift */; };
 		B4E910652805B1C6009B8350 /* CatsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E910642805B1C6009B8350 /* CatsCollection.swift */; };
@@ -66,7 +67,6 @@
 		B414E71728031CA600ED19C3 /* CoreDataSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSave.swift; sourceTree = "<group>"; };
 		B414E71928031CC500ED19C3 /* CoreDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFetch.swift; sourceTree = "<group>"; };
 		B414E71B28031CED00ED19C3 /* CoreDataDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataDelete.swift; sourceTree = "<group>"; };
-		B414E71D28031D5E00ED19C3 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		B414E71F28031F9E00ED19C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B414E7272803421000ED19C3 /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
 		B414E7292803551600ED19C3 /* BreedesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedesModel.swift; sourceTree = "<group>"; };
@@ -74,6 +74,9 @@
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
 		B4C6268D280456430060C77D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		B4C62C25280832C900105FCC /* CoreDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
+		B4C62C272808388500105FCC /* AsyncImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
+		B4C62C2A28085A0000105FCC /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4E910602805B080009B8350 /* CollectionViewEmbed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewEmbed.swift; sourceTree = "<group>"; };
 		B4E910622805B0EB009B8350 /* CatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsCell.swift; sourceTree = "<group>"; };
 		B4E910642805B1C6009B8350 /* CatsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsCollection.swift; sourceTree = "<group>"; };
@@ -86,7 +89,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B42222002806A1AA00BBEF85 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +132,7 @@
 				B414E70C28031BCE00ED19C3 /* Services */,
 				B414E6EB28030B4B00ED19C3 /* Assets.xcassets */,
 				B414E6ED28030B4B00ED19C3 /* Preview Content */,
+				B4C62C2A28085A0000105FCC /* LaunchScreen.storyboard */,
 			);
 			path = Cats;
 			sourceTree = "<group>";
@@ -145,7 +148,7 @@
 		B414E7012803162100ED19C3 /* Elements */ = {
 			isa = PBXGroup;
 			children = (
-				B414E71D28031D5E00ED19C3 /* Spinner.swift */,
+				B4C62C272808388500105FCC /* AsyncImageCached.swift */,
 				B4E910602805B080009B8350 /* CollectionViewEmbed.swift */,
 			);
 			path = Elements;
@@ -212,11 +215,10 @@
 		B414E71628031C7300ED19C3 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				B4C62C25280832C900105FCC /* CoreDataAPI.swift */,
 				B414E71428031C6E00ED19C3 /* CoreDataStore.swift */,
 				B4C6268C280456430060C77D /* Model.xcdatamodeld */,
-				B414E71928031CC500ED19C3 /* CoreDataFetch.swift */,
-				B414E71B28031CED00ED19C3 /* CoreDataDelete.swift */,
-				B414E71728031CA600ED19C3 /* CoreDataSave.swift */,
+				B4C62C292808583900105FCC /* CoreDataMethods */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -236,6 +238,16 @@
 				B414E7292803551600ED19C3 /* BreedesModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B4C62C292808583900105FCC /* CoreDataMethods */ = {
+			isa = PBXGroup;
+			children = (
+				B414E71928031CC500ED19C3 /* CoreDataFetch.swift */,
+				B414E71B28031CED00ED19C3 /* CoreDataDelete.swift */,
+				B414E71728031CA600ED19C3 /* CoreDataSave.swift */,
+			);
+			path = CoreDataMethods;
 			sourceTree = "<group>";
 		};
 		B4E910682805B2CD009B8350 /* Collection */ = {
@@ -273,7 +285,6 @@
 			);
 			name = Cats;
 			packageProductDependencies = (
-				B42221FF2806A1AA00BBEF85 /* NukeUI */,
 			);
 			productName = Cats;
 			productReference = B414E6E428030B4800ED19C3 /* Cats.app */;
@@ -326,7 +337,6 @@
 			);
 			mainGroup = B414E6DB28030B4800ED19C3;
 			packageReferences = (
-				B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = B414E6E528030B4800ED19C3 /* Products */;
 			projectDirPath = "";
@@ -343,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C62C2B28085A0000105FCC /* LaunchScreen.storyboard in Resources */,
 				B414E6EF28030B4B00ED19C3 /* Preview Assets.xcassets in Resources */,
 				B414E6EC28030B4B00ED19C3 /* Assets.xcassets in Resources */,
 			);
@@ -364,7 +375,9 @@
 			files = (
 				B414E71028031BF700ED19C3 /* API.swift in Sources */,
 				B414E6F628030CAB00ED19C3 /* CatsMain.swift in Sources */,
+				B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */,
 				B4E9106F2805EA81009B8350 /* Image+ext.swift in Sources */,
+				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,
 				B4E910672805B22C009B8350 /* CatsCollectionViewController.swift in Sources */,
 				B414E7282803421000ED19C3 /* CatsModel.swift in Sources */,
 				B4E910652805B1C6009B8350 /* CatsCollection.swift in Sources */,
@@ -386,7 +399,6 @@
 				B414E700280313F600ED19C3 /* CatsFavorite.swift in Sources */,
 				B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */,
 				B414E70828031A1900ED19C3 /* CatsDetailViewModel.swift in Sources */,
-				B414E71E28031D5E00ED19C3 /* Spinner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -537,7 +549,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -550,7 +563,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -568,7 +581,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
@@ -581,7 +595,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -652,25 +666,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/NukeUI";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		B42221FF2806A1AA00BBEF85 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B42221FE2806A1AA00BBEF85 /* XCRemoteSwiftPackageReference "NukeUI" */;
-			productName = NukeUI;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B4C6268C280456430060C77D /* Model.xcdatamodeld */ = {

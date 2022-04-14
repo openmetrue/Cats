@@ -26,7 +26,7 @@ final class CatsMainViewModel: ObservableObject {
             .debounce(for: .milliseconds(250), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .map({ (string) -> String? in
-                if string.count < 1 {
+                if string.isEmpty {
                     self.state = .all
                     return nil
                 }

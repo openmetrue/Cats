@@ -11,9 +11,9 @@ import Combine
 struct CoreDataSaveModelPublisher: Publisher {
     typealias Output = Bool
     typealias Failure = NSError
-    private let action: (()->())
+    private let action: () -> Void
     private let context: NSManagedObjectContext
-    init(action: @escaping (()->()), context: NSManagedObjectContext) {
+    init(action: @escaping () -> Void, context: NSManagedObjectContext) {
         self.action = action
         self.context = context
     }
@@ -23,9 +23,9 @@ struct CoreDataSaveModelPublisher: Publisher {
     }
     final class Subscription<S> where S : Subscriber, Failure == S.Failure, Output == S.Input {
         private var subscriber: S?
-        private let action: (()->())
+        private let action: () -> Void
         private let context: NSManagedObjectContext
-        init(subscriber: S, context: NSManagedObjectContext, action: @escaping (()->())) {
+        init(subscriber: S, context: NSManagedObjectContext, action: @escaping () -> Void) {
             self.subscriber = subscriber
             self.context = context
             self.action = action

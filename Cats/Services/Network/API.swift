@@ -32,21 +32,3 @@ extension API {
         return agent.run(url: url)
     }
 }
-
-//    //chain
-//    API.refreshToken(access: UserDefaults.standard.string(forKey: "jsonWebToken")!).flatMap { data in
-//        API.getUserData(access: data.access)
-//    }.sink { _ in
-//    } receiveValue: { data in
-//        print("chain comleted")
-//        print(data)
-//    }.store(in: &bag)
-
-//    //parallel
-//    let refresh = API.refreshToken(access: UserDefaults.standard.string(forKey: "jsonWebToken")!)
-//    let getUser = API.getUserData(access: UserDefaults.standard.string(forKey: "jsonWebToken")!)
-//    Publishers.Zip(refresh, getUser).sink { _ in
-//    } receiveValue: { (Credentials, User) in
-//        print("parallel completed")
-//        print(Credentials, User)
-//    }.store(in: &bag)

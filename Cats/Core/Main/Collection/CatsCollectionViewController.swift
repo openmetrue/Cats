@@ -40,10 +40,8 @@ final class CatsCollectionViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
     }
-    
     private let prefetchLimit: Int
     private var items = [Cat]()
-    
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private enum Section {
         case main

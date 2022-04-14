@@ -19,18 +19,20 @@ struct CatsFavorite: View {
                         Text("add first cat to saved")
                     }
                 case .loaded(let catsDB):
-                    ScrollView {
-                        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)) {
-                            ForEach(catsDB, id: \.unicID) { cat in
-                                NavigationLink(destination: CatsFavoriteDetail(cat: cat)) {
-                                    if let imageData = cat.image,
-                                       let uiimage = UIImage(data: imageData),
-                                       let image = Image(uiImage: uiimage) {
-                                        image
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: UIScreen.main.bounds.width/3, height: UIScreen.main.bounds.width/3, alignment: .center)
-                                            .clipped()
+                    GeometryReader { geo in
+                        ScrollView {
+                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)) {
+                                ForEach(catsDB, id: \.unicID) { cat in
+                                    NavigationLink(destination: CatsFavoriteDetail(cat: cat)) {
+                                        if let imageData = cat.image,
+                                           let uiimage = UIImage(data: imageData),
+                                           let image = Image(uiImage: uiimage) {
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                                .frame(width: geo.size.width/3, height: geo.size.width/3, alignment: .center)
+                                                .clipped()
+                                        }
                                     }
                                 }
                             }
@@ -46,7 +48,7 @@ struct CatsFavorite: View {
                 case .error(let error):
                     Text(error)
                 case .loading:
-                    Spinner()
+                    ProgressView()
                 }
             }
             .onAppear {

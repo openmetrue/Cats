@@ -11,12 +11,11 @@ import Combine
 
 final class CatsFavoriteViewModel: ObservableObject {
     @Published private(set) var state: CatsFavoriteViewState = .loading
-    private let coreDataStore = CoreDataStore.shared
     private var bag = Set<AnyCancellable>()
     
     public func fetchCats() {
         let request = NSFetchRequest<CatDB>(entityName: "CatDB")
-        coreDataStore
+        CDAPI
             .publicher(fetch: request)
             .sink {
                 switch $0 {
@@ -36,7 +35,7 @@ final class CatsFavoriteViewModel: ObservableObject {
     }
     public func deleteAll() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CatDB")
-        coreDataStore
+        CDAPI
             .publicher(delete: request)
             .sink {
                 switch $0 {
