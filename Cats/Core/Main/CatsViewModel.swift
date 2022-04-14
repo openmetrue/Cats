@@ -13,9 +13,11 @@ final class CatsMainViewModel: ObservableObject {
     @Published private(set) var cats: [Cat] = []
     @Published private(set) var breeds: [Breedes] = []
     @Published var searchText = ""
+    
     public let restOfCellsBeforeFetch = 10
     private let limit = 40
     private var page = 0
+    
     public let loadMoreSubject = PassthroughSubject<Void, Never>()
     private var bag = Set<AnyCancellable>()
     init() {
@@ -39,7 +41,8 @@ final class CatsMainViewModel: ObservableObject {
             }).store(in: &bag)
     }
     public func getCatsSearch(_ searchText: String) {
-        API.searchCats(searchText).sink(receiveCompletion: {
+        API.searchCats(searchText)
+            .sink(receiveCompletion: {
                 switch $0 {
                 case .finished:
                     break
@@ -51,7 +54,8 @@ final class CatsMainViewModel: ObservableObject {
             }).store(in: &bag)
     }
     public func fetchNextPageIfPossible() {
-        API.getAllCats(page: page, limit: limit).sink(receiveCompletion: {
+        API.getAllCats(page: page, limit: limit)
+            .sink(receiveCompletion: {
             switch $0 {
             case .finished:
                 break

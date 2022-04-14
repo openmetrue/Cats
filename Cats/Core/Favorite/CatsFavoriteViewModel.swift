@@ -15,8 +15,7 @@ final class CatsFavoriteViewModel: ObservableObject {
     
     public func fetchCats() {
         let request = NSFetchRequest<CatDB>(entityName: "CatDB")
-        CDAPI
-            .publicher(fetch: request)
+        CDAPI.publicher(fetch: request)
             .sink {
                 switch $0 {
                 case .finished:
@@ -35,8 +34,7 @@ final class CatsFavoriteViewModel: ObservableObject {
     }
     public func deleteAll() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CatDB")
-        CDAPI
-            .publicher(delete: request)
+        CDAPI.publicher(delete: request)
             .sink {
                 switch $0 {
                 case .finished:

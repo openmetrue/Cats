@@ -21,16 +21,17 @@ final class CatsDetailViewModel: ObservableObject {
     }
     
     public func loadCat(id: String) {
-        API.getCatsFromID(id).sink(receiveCompletion: {
-            switch $0 {
-            case .finished:
-                break
-            case .failure(let error):
-                self.state = .error(error.localizedDescription)
-            }
-        }, receiveValue: {
-            self.state = .loaded($0)
-        }).store(in: &bag)
+        API.getCatsFromID(id)
+            .sink(receiveCompletion: {
+                switch $0 {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state = .error(error.localizedDescription)
+                }
+            }, receiveValue: {
+                self.state = .loaded($0)
+            }).store(in: &bag)
     }
     
     public func save(_ cat: Cat) {
@@ -49,7 +50,6 @@ final class CatsDetailViewModel: ObservableObject {
             // }
             //else {
             catDB.image = try? Data(contentsOf: URL(string: cat.url)!)
-            print("saved from web")
             //}
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {
@@ -59,7 +59,6 @@ final class CatsDetailViewModel: ObservableObject {
                 breedDB.breedDescription = breed.breedDescription
                 breedsDB.append(breedDB)
             }
-            
             var categoriesDB: [CategoryDB] = []
             if let categories = cat.categories {
                 for category in categories {
@@ -69,12 +68,10 @@ final class CatsDetailViewModel: ObservableObject {
                     categoriesDB.append(categoryDB)
                 }
             }
-            
             catDB.breedDB = NSSet(array: breedsDB)
             catDB.categoryDB = NSSet(array: categoriesDB)
         }
-        CDAPI
-            .publicher(save: action)
+        CDAPI.publicher(save: action)
             .sink {
                 switch $0 {
                 case .finished:

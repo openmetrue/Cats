@@ -40,7 +40,7 @@ struct CatsMain: View {
 
 //struct CatsMain_Previews: PreviewProvider {
 //    static var previews: some View {
-//        CatsMain(, selectedItem: <#Cat#>)
+//        CatsMain(, selectedItem: сat)
 //    }
 //}
 

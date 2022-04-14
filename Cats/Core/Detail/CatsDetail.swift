@@ -52,14 +52,14 @@ struct CatsDetail: View {
                                 }
                             }
                         } .id(UUID())
-                    } .toolbar {
-                        Button {
-                            viewModel.save(cat)
-                        } label: {
-                            Text("Save to offline")
-                                .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
-                        }
                     }
+                }
+            } .toolbar {
+                Button {
+                    viewModel.save(cat)
+                } label: {
+                    Text("Save to offline")
+                        .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
                 }
             }
         case .loading:
