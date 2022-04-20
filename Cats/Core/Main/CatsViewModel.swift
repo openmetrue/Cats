@@ -25,7 +25,7 @@ final class CatsMainViewModel: ObservableObject {
     }
     private func setUpFetching() {
         $searchText
-            .debounce(for: .milliseconds(250), scheduler: DispatchQueue.main)
+            .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)
             .removeDuplicates()
             .map({ (string) -> String? in
                 if string.isEmpty {

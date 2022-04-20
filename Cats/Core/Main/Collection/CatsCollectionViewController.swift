@@ -32,10 +32,6 @@ final class CatsCollectionViewController: UIViewController {
         setupView()
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with _: UIViewControllerTransitionCoordinator) {
-        collectionView.refreshControl?.tintColor = newCollection.userInterfaceStyle == .dark ? .white : .black
-    }
-    
     private func setupView() {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)

@@ -28,6 +28,9 @@
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
+		B4510FE828100301007483B1 /* UIHostingController+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4510FE728100301007483B1 /* UIHostingController+ext.swift */; };
+		B4510FEA28100320007483B1 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4510FE928100320007483B1 /* CollectionView.swift */; };
+		B4510FEE28101D58007483B1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B4510FED28101D58007483B1 /* NukeUI */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
 		B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C25280832C900105FCC /* CoreDataAPI.swift */; };
 		B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C272808388500105FCC /* AsyncImageCached.swift */; };
@@ -73,6 +76,8 @@
 		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
+		B4510FE728100301007483B1 /* UIHostingController+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIHostingController+ext.swift"; sourceTree = "<group>"; };
+		B4510FE928100320007483B1 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		B4C6268D280456430060C77D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B4C62C25280832C900105FCC /* CoreDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		B4C62C272808388500105FCC /* AsyncImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
@@ -89,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4510FEE28101D58007483B1 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +237,15 @@
 			path = CatsTests;
 			sourceTree = "<group>";
 		};
+		B4510FEB281004ED007483B1 /* NewCollectionType */ = {
+			isa = PBXGroup;
+			children = (
+				B4510FE728100301007483B1 /* UIHostingController+ext.swift */,
+				B4510FE928100320007483B1 /* CollectionView.swift */,
+			);
+			path = NewCollectionType;
+			sourceTree = "<group>";
+		};
 		B4C626882804072F0060C77D /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -256,6 +271,7 @@
 				B4E910642805B1C6009B8350 /* CatsCollection.swift */,
 				B4E910622805B0EB009B8350 /* CatsCell.swift */,
 				B4E910662805B22C009B8350 /* CatsCollectionViewController.swift */,
+				B4510FEB281004ED007483B1 /* NewCollectionType */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -285,6 +301,7 @@
 			);
 			name = Cats;
 			packageProductDependencies = (
+				B4510FED28101D58007483B1 /* NukeUI */,
 			);
 			productName = Cats;
 			productReference = B414E6E428030B4800ED19C3 /* Cats.app */;
@@ -337,6 +354,7 @@
 			);
 			mainGroup = B414E6DB28030B4800ED19C3;
 			packageReferences = (
+				B4510FEC28101D58007483B1 /* XCRemoteSwiftPackageReference "NukeUI" */,
 			);
 			productRefGroup = B414E6E528030B4800ED19C3 /* Products */;
 			projectDirPath = "";
@@ -375,6 +393,7 @@
 			files = (
 				B414E71028031BF700ED19C3 /* API.swift in Sources */,
 				B414E6F628030CAB00ED19C3 /* CatsMain.swift in Sources */,
+				B4510FEA28100320007483B1 /* CollectionView.swift in Sources */,
 				B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */,
 				B4E9106F2805EA81009B8350 /* Image+ext.swift in Sources */,
 				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,
@@ -397,6 +416,7 @@
 				B414E71228031C0300ED19C3 /* AgentError.swift in Sources */,
 				B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */,
 				B414E700280313F600ED19C3 /* CatsFavorite.swift in Sources */,
+				B4510FE828100301007483B1 /* UIHostingController+ext.swift in Sources */,
 				B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */,
 				B414E70828031A1900ED19C3 /* CatsDetailViewModel.swift in Sources */,
 			);
@@ -666,6 +686,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B4510FEC28101D58007483B1 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B4510FED28101D58007483B1 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B4510FEC28101D58007483B1 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B4C6268C280456430060C77D /* Model.xcdatamodeld */ = {

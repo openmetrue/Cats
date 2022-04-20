@@ -22,11 +22,14 @@ struct CatsDetail: View {
             Group {
                 ZStack {
                     VStack {
-                        AsyncImage(url: URL(string: cat.url)) { image in
-                            image
-                                .centerCropped()
-                        } placeholder: {
-                            ProgressView()
+                        LazyImage(source: cat.url) { state in
+                            if let image = state.image {
+                                image
+                            } else if state.error != nil {
+                                Color.clear// Indicates an error.
+                            } else {
+                                ProgressView()
+                            }
                         }
                         List {
                             Text("Cat's ID: \(cat.id)")
