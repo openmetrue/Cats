@@ -66,6 +66,9 @@ final class CatsMainViewModel: ObservableObject {
                 }
             }, receiveValue: {
                 self.breeds = $0
+                if $0.isEmpty {
+                    self.state = .searchEmpty(searchText)
+                }
             }).store(in: &bag)
     }
     public func fetchNextPageIfPossible() {
@@ -83,7 +86,7 @@ final class CatsMainViewModel: ObservableObject {
         }).store(in: &bag)
     }
     enum CatsMainViewState {
-        case loading, search, all, error(String)
+        case loading, search, searchEmpty(String), all, error(String)
     }
 }
 
