@@ -23,11 +23,10 @@ struct CatsMain: View {
                         }
                     }.id(UUID())
                 case .all:
-                    CollectionView(items: viewModel.cats, prefetchLimit: viewModel.restOfCellsBeforeFetch, loadMoreSubject: viewModel.loadMoreSubject) { indexPath, item in
-                        cell(for: item, at: indexPath)
-                    }.onReceive(viewModel.loadMoreSubject, perform: {
-                        self.viewModel.fetchNextPageIfPossible()
-                    })
+                    CollectionView(items: viewModel.cats, prefetchLimit: viewModel.restOfCellsBeforeFetch, loadMoreSubject: viewModel.loadMoreSubject) { indexPath, item in CatsCell(item: item) }
+                        .onReceive(viewModel.loadMoreSubject, perform: {
+                            self.viewModel.fetchNextPageIfPossible()
+                        })
                 case .error(let error):
                     Text(error)
                 }
@@ -36,9 +35,6 @@ struct CatsMain: View {
             .navigationTitle("Сat's observer")
             .environment(\.disableAutocorrection, true)
         }
-    }
-    func cell(for item: Cat, at indexPath: IndexPath) -> some View {
-        CatsCell(item: item)
     }
 }
 

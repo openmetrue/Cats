@@ -1,17 +1,11 @@
 //
-//  UIHostingController+ext.swift
+//  UIHosting + ext.swift
 //  Cats
 //
 //  Created by Mark Khmelnitskii on 20.04.2022.
 //
 
 import SwiftUI
-
-extension CollectionView {
-    enum Sections {
-        case main
-    }
-}
 
 extension UIHostingController {
     convenience public init(rootView: Content, ignoreSafeArea: Bool) {

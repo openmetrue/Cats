@@ -26,6 +26,9 @@ struct CollectionView<Item: Hashable, Cell: View>: UIViewRepresentable {
         self.loadMoreSubject = loadMoreSubject
         self.cell = cell
     }
+    enum Sections {
+        case main
+    }
     func makeUIView(context: Context) -> UICollectionView {
         let cellIdentifier = "hostCell"
         let collectionView = UICollectionView(
@@ -87,7 +90,7 @@ extension CollectionView {
         let coordinator = context.coordinator
         guard let dataSource = coordinator.dataSource else { return }
         
-        self.items = items
+        //self.items = items
         var snapshot = NSDiffableDataSourceSnapshot<Sections, Item>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
