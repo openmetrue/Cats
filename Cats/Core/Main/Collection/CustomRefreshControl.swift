@@ -22,16 +22,15 @@ class CustomRefreshControl: UIRefreshControl {
     
     @objc func onSwipeRefresh(_ sender: UIRefreshControl) {
         swipeRefreshDelegate?.onSwipeRefresh()
+        beginRefreshingManually()
     }
     
     func isLoading(_ isLoading: Bool) {
         if isLoading {
             beginRefreshingManually()
-        } else {
-            self.endRefreshing()
+            print("loading")
         }
     }
-    
     func beginRefreshingManually() {
         if let scrollView = superview as? UIScrollView {
             scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.height), animated: true)

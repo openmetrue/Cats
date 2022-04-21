@@ -11,7 +11,6 @@ import SwiftUI
 final class CollectionViewController<Item: Hashable, Cell: View>: UIViewController {
     private var items = [Item]()
     private let prefetchLimit: Int
-    private let cellIdentifier = "hostCell"
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private let pullToRefreshSubject: PassthroughSubject<Void, Never>?
@@ -74,22 +73,21 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(HostCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        
-        let refresh = CustomRefreshControl(frame: .zero)
-        refresh.accessibilityIdentifier = "refreshControl"
-        refresh.swipeRefreshDelegate = self
-        refresh.tintColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
-        collectionView.refreshControl = refresh
+        collectionView.register(HostCell.self, forCellWithReuseIdentifier: "hostCell")
+        if pullToRefreshSubject != nil {
+            let refresh = CustomRefreshControl(frame: .zero)
+            refresh.swipeRefreshDelegate = self
+            collectionView.refreshControl = refresh
+        }
         return collectionView
     }()
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let dataSource: UICollectionViewDiffableDataSource<Section, Item> = UICollectionViewDiffableDataSource(collectionView: collectionView)
-        { [self] collectionView, indexPath, viewModel in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? HostCell
+        { [weak self] collectionView, indexPath, viewModel in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "hostCell", for: indexPath) as? HostCell
             else { fatalError("Cannot create feed cell") }
-            cell.hostedCell = self.cell(indexPath, (self.items[indexPath.row]))
+            cell.hostedCell = self?.cell(indexPath, (self?.items[indexPath.row])!)
             return cell
         }
         return dataSource
@@ -120,5 +118,6 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
 extension CollectionViewController: RefreshControlDelegate {
     func onSwipeRefresh() {
         pullToRefreshSubject?.send()
+        self.collectionView.refreshControl?.endRefreshing()
     }
 }
