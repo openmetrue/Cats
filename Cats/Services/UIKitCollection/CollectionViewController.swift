@@ -75,12 +75,17 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         collectionView.backgroundColor = .systemBackground
         collectionView.register(HostCell.self, forCellWithReuseIdentifier: "hostCell")
         if pullToRefreshSubject != nil {
-            let refresh = CustomRefreshControl(frame: .zero)
-            refresh.swipeRefreshDelegate = self
+            let refresh = UIRefreshControl()
+            refresh.addTarget(self, action: #selector(onSwipeRefresh), for: .valueChanged)
             collectionView.refreshControl = refresh
         }
         return collectionView
     }()
+    
+    @objc func onSwipeRefresh() {
+        pullToRefreshSubject?.send()
+        self.collectionView.refreshControl?.endRefreshing()
+    }
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let dataSource: UICollectionViewDiffableDataSource<Section, Item> = UICollectionViewDiffableDataSource(collectionView: collectionView)
@@ -112,12 +117,5 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
                 }
             }
         }
-    }
-}
-
-extension CollectionViewController: RefreshControlDelegate {
-    func onSwipeRefresh() {
-        pullToRefreshSubject?.send()
-        self.collectionView.refreshControl?.endRefreshing()
     }
 }

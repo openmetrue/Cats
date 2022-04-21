@@ -27,7 +27,6 @@
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
 		B421084B281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */; };
-		B421085E28119C73001A8B35 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421085D28119C73001A8B35 /* CustomRefreshControl.swift */; };
 		B42108602811AB2D001A8B35 /* SeacrhField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421085F2811AB2D001A8B35 /* SeacrhField.swift */; };
 		B421086A2811B841001A8B35 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42108662811B841001A8B35 /* ImageCache.swift */; };
 		B421086B2811B841001A8B35 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42108672811B841001A8B35 /* ImageLoader.swift */; };
@@ -76,7 +75,6 @@
 		B414E7272803421000ED19C3 /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
 		B414E7292803551600ED19C3 /* BreedesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedesModel.swift; sourceTree = "<group>"; };
 		B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingIgnoreSafeArea.swift; sourceTree = "<group>"; };
-		B421085D28119C73001A8B35 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
 		B421085F2811AB2D001A8B35 /* SeacrhField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeacrhField.swift; sourceTree = "<group>"; };
 		B42108662811B841001A8B35 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		B42108672811B841001A8B35 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -277,7 +275,6 @@
 			children = (
 				B4E910642805B1C6009B8350 /* UIKitCollection.swift */,
 				B4E910662805B22C009B8350 /* CollectionViewController.swift */,
-				B421085D28119C73001A8B35 /* CustomRefreshControl.swift */,
 				B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */,
 			);
 			path = UIKitCollection;
@@ -403,7 +400,6 @@
 				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,
 				B4E910672805B22C009B8350 /* CollectionViewController.swift in Sources */,
 				B414E7282803421000ED19C3 /* CatsModel.swift in Sources */,
-				B421085E28119C73001A8B35 /* CustomRefreshControl.swift in Sources */,
 				B4E910652805B1C6009B8350 /* UIKitCollection.swift in Sources */,
 				B414E70E28031BF100ED19C3 /* Agent.swift in Sources */,
 				B414E70A28031B5900ED19C3 /* CatsFavoriteViewModel.swift in Sources */,
