@@ -27,6 +27,8 @@
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
 		B421084B281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */; };
+		B421085C28118CCB001A8B35 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = B421085B28118CCB001A8B35 /* Introspect */; };
+		B421085E28119C73001A8B35 /* CustomRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421085D28119C73001A8B35 /* CustomRefreshControl.swift */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
@@ -71,6 +73,7 @@
 		B414E7272803421000ED19C3 /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
 		B414E7292803551600ED19C3 /* BreedesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedesModel.swift; sourceTree = "<group>"; };
 		B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingIgnoreSafeArea.swift; sourceTree = "<group>"; };
+		B421085D28119C73001A8B35 /* CustomRefreshControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRefreshControl.swift; sourceTree = "<group>"; };
 		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B421085C28118CCB001A8B35 /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +259,7 @@
 			children = (
 				B4E910642805B1C6009B8350 /* UIKitCollection.swift */,
 				B4E910662805B22C009B8350 /* CollectionViewController.swift */,
+				B421085D28119C73001A8B35 /* CustomRefreshControl.swift */,
 				B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */,
 			);
 			path = Collection;
@@ -285,6 +290,7 @@
 			);
 			name = Cats;
 			packageProductDependencies = (
+				B421085B28118CCB001A8B35 /* Introspect */,
 			);
 			productName = Cats;
 			productReference = B414E6E428030B4800ED19C3 /* Cats.app */;
@@ -337,6 +343,7 @@
 			);
 			mainGroup = B414E6DB28030B4800ED19C3;
 			packageReferences = (
+				B421085A28118CCB001A8B35 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = B414E6E528030B4800ED19C3 /* Products */;
 			projectDirPath = "";
@@ -380,6 +387,7 @@
 				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,
 				B4E910672805B22C009B8350 /* CollectionViewController.swift in Sources */,
 				B414E7282803421000ED19C3 /* CatsModel.swift in Sources */,
+				B421085E28119C73001A8B35 /* CustomRefreshControl.swift in Sources */,
 				B4E910652805B1C6009B8350 /* UIKitCollection.swift in Sources */,
 				B414E70E28031BF100ED19C3 /* Agent.swift in Sources */,
 				B414E70A28031B5900ED19C3 /* CatsFavoriteViewModel.swift in Sources */,
@@ -666,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B421085A28118CCB001A8B35 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B421085B28118CCB001A8B35 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B421085A28118CCB001A8B35 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		B4C6268C280456430060C77D /* Model.xcdatamodeld */ = {

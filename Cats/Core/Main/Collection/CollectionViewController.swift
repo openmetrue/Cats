@@ -14,10 +14,12 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     private let cellIdentifier = "hostCell"
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
+    private let pullToRefreshSubject: PassthroughSubject<Void, Never>?
     
-    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
+    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
+        self.pullToRefreshSubject = pullToRefreshSubject
         self.cell = cell
         super.init(nibName: nil, bundle: nil)
     }
@@ -73,6 +75,12 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(HostCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        
+        let refresh = CustomRefreshControl(frame: .zero)
+        refresh.accessibilityIdentifier = "refreshControl"
+        refresh.swipeRefreshDelegate = self
+        refresh.tintColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
+        collectionView.refreshControl = refresh
         return collectionView
     }()
     
@@ -109,4 +117,8 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     }
 }
 
-
+extension CollectionViewController: RefreshControlDelegate {
+    func onSwipeRefresh() {
+        pullToRefreshSubject?.send()
+    }
+}

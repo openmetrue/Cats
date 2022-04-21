@@ -18,6 +18,7 @@ final class CatsMainViewModel: ObservableObject {
     private let limit = 40
     private var page = 0
     
+    public let pullToRefreshSubject = PassthroughSubject<Void, Never>()
     public let loadMoreSubject = PassthroughSubject<Void, Never>()
     public var bag = Set<AnyCancellable>()
     init() {
