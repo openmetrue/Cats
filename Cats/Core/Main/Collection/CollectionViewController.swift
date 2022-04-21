@@ -8,8 +8,7 @@
 import Combine
 import SwiftUI
 
-final class CatsCollectionViewController<Item: Hashable, Cell: View>: UIViewController {
-    
+final class CollectionViewController<Item: Hashable, Cell: View>: UIViewController {
     private var items = [Item]()
     private let prefetchLimit: Int
     private let cellIdentifier = "hostCell"
@@ -73,17 +72,16 @@ final class CatsCollectionViewController<Item: Hashable, Cell: View>: UIViewCont
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(CollectionViewEmbed.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.register(HostCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
         return collectionView
     }()
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let dataSource: UICollectionViewDiffableDataSource<Section, Item> = UICollectionViewDiffableDataSource(collectionView: collectionView)
         { [weak self] collectionView, indexPath, viewModel in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as? CollectionViewEmbed
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as? HostCell
             else { fatalError("Cannot create feed cell") }
-            //cell.hostedCell = self?.cell(indexPath, (self?.items[indexPath.row])!)
-            cell.embed(in: self!, withView: self?.cell(indexPath, (self?.items[indexPath.row])!))
+            cell.hostedCell = self?.cell(indexPath, (self?.items[indexPath.row])!)
             return cell
         }
         return dataSource
@@ -107,34 +105,6 @@ final class CatsCollectionViewController<Item: Hashable, Cell: View>: UIViewCont
                     contentView.addSubview(hostView)
                 }
             }
-        }
-    }
-    private class CollectionViewEmbed: UICollectionViewCell {
-        private(set) var controller: UIHostingController<Cell>?
-        override func prepareForReuse() {
-            if let hostView = controller?.view {
-                hostView.removeFromSuperview()
-            }
-            controller = nil
-        }
-        func embed(in parent: UIViewController, withView content: Cell?) {
-            guard let content = content else { return }
-            if let controller = self.controller {
-                controller.rootView = content
-                controller.view.layoutIfNeeded()
-            } else {
-                let controller = UIHostingController(rootView: content, ignoreSafeArea: true)
-                parent.addChild(controller)
-                controller.didMove(toParent: parent)
-                self.contentView.addSubview(controller.view)
-                self.controller = controller
-            }
-        }
-        deinit {
-            controller?.willMove(toParent: nil)
-            controller?.view.removeFromSuperview()
-            controller?.removeFromParent()
-            controller = nil
         }
     }
 }

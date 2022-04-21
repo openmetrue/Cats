@@ -10,7 +10,6 @@ import SwiftUI
 extension UIHostingController {
     convenience public init(rootView: Content, ignoreSafeArea: Bool) {
         self.init(rootView: rootView)
-
         if ignoreSafeArea {
             disableSafeArea()
         }

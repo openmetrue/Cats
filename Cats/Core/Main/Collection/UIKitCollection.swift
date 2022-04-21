@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-struct CatsCollection<Item: Hashable, Cell: View>: UIViewControllerRepresentable {
+struct UIKitCollection<Item: Hashable, Cell: View>: UIViewControllerRepresentable {
     private var items: [Item]
     private let prefetchLimit: Int
     private let cell: (IndexPath, Item) -> Cell
@@ -21,11 +21,11 @@ struct CatsCollection<Item: Hashable, Cell: View>: UIViewControllerRepresentable
         self.cell = cell
     }
 
-    func makeUIViewController(context _: Context) -> CatsCollectionViewController<Item, Cell> {
-        CatsCollectionViewController(prefetchLimit: prefetchLimit, loadMoreSubject: loadMoreSubject, cell: cell)
+    func makeUIViewController(context _: Context) -> CollectionViewController<Item, Cell> {
+        CollectionViewController(prefetchLimit: prefetchLimit, loadMoreSubject: loadMoreSubject, cell: cell)
     }
 
-    func updateUIViewController(_ view: CatsCollectionViewController<Item, Cell>, context _: Context) {
+    func updateUIViewController(_ view: CollectionViewController<Item, Cell>, context _: Context) {
         view.updateSnapshot(items: items)
     }
 }
