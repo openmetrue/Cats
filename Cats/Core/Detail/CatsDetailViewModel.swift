@@ -12,6 +12,7 @@ import SwiftUI
 final class CatsDetailViewModel: ObservableObject {
     @Published private(set) var state: CatsDetailViewState = .loading
     @Published private(set) var saved: Bool = false
+    
     private var bag = Set<AnyCancellable>()
     public init(cat: Cat) {
         self.state = .loaded(cat)
@@ -43,13 +44,12 @@ final class CatsDetailViewModel: ObservableObject {
             catDB.url = cat.url
             catDB.width = Int64(cat.width)
             catDB.height = Int64(cat.height)
-            
-            //if let uiImage = self.cache[URL(string: cat.url)!] {
-            //    catDB.image = uiImage.jpegData(compressionQuality: 1)
-            //    print("saved from cache")
-            // }
-            //else {
+//            if let uiImage = self.cache[URL(string: cat.url)!] {// self.cache.object(forKey: URL(string: cat.url)! as NSURL) {
+//                catDB.image = uiImage.jpegData(compressionQuality: 1)
+//                print("saved from cache")
+//            } else {
             catDB.image = try? Data(contentsOf: URL(string: cat.url)!)
+            //    print("saved from web")
             //}
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {

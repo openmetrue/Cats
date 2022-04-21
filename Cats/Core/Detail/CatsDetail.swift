@@ -57,8 +57,9 @@ struct CatsDetail: View {
                     viewModel.save(cat)
                 } label: {
                     Text("Save to offline")
-                        .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
                 }
+                .foregroundColor(viewModel.saved ? Color.secondary : Color.accentColor)
+                .disabled(viewModel.saved)
             }
         case .loading:
             ProgressView()

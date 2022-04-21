@@ -11,11 +11,13 @@ import SwiftUI
 struct AsyncImageCached<I: View, P: View>: View {
     @StateObject private var loader: ImageLoader
     private let placeholder: () -> P
+    private var url: String
     private var content: (Image) -> I
     
     public init(url: String, content: @escaping (Image) -> I, placeholder: @escaping () -> P) {
         self.placeholder = placeholder
         self.content = content
+        self.url = url
         _loader = StateObject(wrappedValue: ImageLoader(url: URL(string: url), cache: Environment(\.imageCache).wrappedValue))
     }
     
@@ -27,3 +29,4 @@ struct AsyncImageCached<I: View, P: View>: View {
         }
     }
 }
+
