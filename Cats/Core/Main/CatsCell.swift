@@ -15,7 +15,7 @@ struct CatsCell: View {
             CatsDetail(cat: item)
         } label: {
             VStack {
-                AsyncImage(url: URL(string: item.url)) { image in
+                AsyncImageCached(url: item.url) { image in
                     image.centerCropped()
                 } placeholder: {
                     ProgressView()

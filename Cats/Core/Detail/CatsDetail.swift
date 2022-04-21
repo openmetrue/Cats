@@ -21,7 +21,7 @@ struct CatsDetail: View {
             Group {
                 ZStack {
                     VStack {
-                        AsyncImage(url: URL(string: cat.url)) { image in
+                        AsyncImageCached(url: cat.url) { image in
                             image.centerCropped()
                         } placeholder: {
                             ProgressView()
