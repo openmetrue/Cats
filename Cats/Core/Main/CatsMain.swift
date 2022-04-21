@@ -23,16 +23,10 @@ struct CatsMain: View {
                         }
                     }.id(UUID())
                 case .all:
-                    UIKitCollection(items: viewModel.cats, prefetchLimit: viewModel.restOfCellsBeforeFetch, loadMoreSubject: viewModel.loadMoreSubject, pullToRefreshSubject: viewModel.pullToRefreshSubjectSubject) { indexPath, item in CatsCell(item: item, index: indexPath.row) }
+                    UIKitCollection(items: viewModel.cats, prefetchLimit: viewModel.restOfCellsBeforeFetch, loadMoreSubject: viewModel.loadMoreSubject) { indexPath, item in CatsCell(item: item, index: indexPath.row) }
                         .onReceive(viewModel.loadMoreSubject, perform: {
                             self.viewModel.fetchNextPageIfPossible()
                         })
-                        .onReceive(viewModel.pullToRefreshSubjectSubject) { completion in
-                            self.viewModel.refresh().sink {
-                                completion()
-                            }
-                            .store(in: &self.viewModel.bag)
-                        }
                 case .error(let error):
                     Text(error)
                 }

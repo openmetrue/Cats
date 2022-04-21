@@ -14,12 +14,10 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     private let cellIdentifier = "hostCell"
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
-    private let pullToRefreshSubject: PassthroughSubject<()->Void, Never>?
     
-    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<()->Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
+    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
-        self.pullToRefreshSubject = pullToRefreshSubject
         self.cell = cell
         super.init(nibName: nil, bundle: nil)
     }
@@ -75,17 +73,8 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(HostCell.self, forCellWithReuseIdentifier: cellIdentifier)
-        collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(pullToRefreshAction), for: .valueChanged)
-        collectionView.refreshControl?.tintColor = traitCollection.userInterfaceStyle == .dark ? .white : .black
         return collectionView
     }()
-    
-    @objc private func pullToRefreshAction() {
-        pullToRefreshSubject?.send {
-            self.collectionView.refreshControl?.endRefreshing()
-        }
-    }
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let dataSource: UICollectionViewDiffableDataSource<Section, Item> = UICollectionViewDiffableDataSource(collectionView: collectionView)
