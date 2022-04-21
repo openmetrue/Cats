@@ -13,16 +13,18 @@ struct UIKitCollection<Item: Hashable, Cell: View>: UIViewControllerRepresentabl
     private let prefetchLimit: Int
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
+    private let pullToRefreshSubject: PassthroughSubject<()->Void, Never>?
     
-    public init(items: [Item], prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
+    public init(items: [Item], prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<()->Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.items = items
         self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
+        self.pullToRefreshSubject = pullToRefreshSubject
         self.cell = cell
     }
 
     func makeUIViewController(context _: Context) -> CollectionViewController<Item, Cell> {
-        CollectionViewController(prefetchLimit: prefetchLimit, loadMoreSubject: loadMoreSubject, cell: cell)
+        CollectionViewController(prefetchLimit: prefetchLimit, loadMoreSubject: loadMoreSubject, pullToRefreshSubject: pullToRefreshSubject, cell: cell)
     }
 
     func updateUIViewController(_ view: CollectionViewController<Item, Cell>, context _: Context) {

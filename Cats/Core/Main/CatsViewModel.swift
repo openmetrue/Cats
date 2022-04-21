@@ -18,8 +18,11 @@ final class CatsMainViewModel: ObservableObject {
     private let limit = 40
     private var page = 0
     
+    public let pullToRefreshSubjectSubject = PassthroughSubject<()->Void, Never>()
+    private let refreshCompletionSubject = PassthroughSubject<Void, Never>()
+    
     public let loadMoreSubject = PassthroughSubject<Void, Never>()
-    private var bag = Set<AnyCancellable>()
+    public var bag = Set<AnyCancellable>()
     init() {
         setUpFetching()
     }
@@ -39,6 +42,26 @@ final class CatsMainViewModel: ObservableObject {
             .sink(receiveValue: { [self] (searchText) in
                 getCatsSearch(searchText)
             }).store(in: &bag)
+    }
+    
+    @discardableResult func refresh() -> AnyPublisher<Void, Never> {
+        page = 0
+        refreshItems()
+        return refreshCompletionSubject.eraseToAnyPublisher()
+    }
+    public func refreshItems() {
+        API.getAllCats(page: page, limit: limit)
+            .sink(receiveCompletion: {
+            switch $0 {
+            case .finished:
+                break
+            case .failure(let error):
+                self.state = .error(error.localizedDescription)
+            }
+        }, receiveValue: {
+            self.cats = $0
+            self.page += 1
+        }).store(in: &bag)
     }
     public func getCatsSearch(_ searchText: String) {
         API.searchCats(searchText)

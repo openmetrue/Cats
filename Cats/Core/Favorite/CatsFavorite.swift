@@ -55,6 +55,7 @@ struct CatsFavorite: View {
                 viewModel.fetchCats()
             }
             .navigationTitle("Saved cat's")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
