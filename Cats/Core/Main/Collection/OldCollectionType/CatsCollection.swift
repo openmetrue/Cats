@@ -8,21 +8,24 @@
 import SwiftUI
 import Combine
 
-struct CatsCollection: UIViewControllerRepresentable {
-    private var items: [Cat]
-    private let loadMoreSubject: PassthroughSubject<Void, Never>?
+struct CatsCollection<Item: Hashable, Cell: View>: UIViewControllerRepresentable {
+    private var items: [Item]
     private let prefetchLimit: Int
-    init(items: [Cat], loadMoreSubject: PassthroughSubject<Void, Never>? = nil, prefetchLimit: Int = 10) {
+    private let cell: (IndexPath, Item) -> Cell
+    private let loadMoreSubject: PassthroughSubject<Void, Never>?
+    
+    public init(items: [Item], prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.items = items
-        self.loadMoreSubject = loadMoreSubject
         self.prefetchLimit = prefetchLimit
+        self.loadMoreSubject = loadMoreSubject
+        self.cell = cell
     }
 
-    func makeUIViewController(context _: Context) -> CatsCollectionViewController {
-        CatsCollectionViewController(loadMoreSubject: loadMoreSubject, prefetchLimit: prefetchLimit)
+    func makeUIViewController(context _: Context) -> CatsCollectionViewController<Item, Cell> {
+        CatsCollectionViewController(prefetchLimit: prefetchLimit, loadMoreSubject: loadMoreSubject, cell: cell)
     }
 
-    func updateUIViewController(_ view: CatsCollectionViewController, context _: Context) {
+    func updateUIViewController(_ view: CatsCollectionViewController<Item, Cell>, context _: Context) {
         view.updateSnapshot(items: items)
     }
 }

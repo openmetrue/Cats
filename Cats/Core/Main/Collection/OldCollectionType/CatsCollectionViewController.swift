@@ -6,22 +6,29 @@
 //
 
 import Combine
-import UIKit
+import SwiftUI
 
-final class CatsCollectionViewController: UIViewController {
-    init(loadMoreSubject: PassthroughSubject<Void, Never>? = nil,
-         prefetchLimit: Int) {
+final class CatsCollectionViewController<Item: Hashable, Cell: View>: UIViewController {
+    
+    private var items = [Item]()
+    private let prefetchLimit: Int
+    private let cellIdentifier = "hostCell"
+    private let cell: (IndexPath, Item) -> Cell
+    private let loadMoreSubject: PassthroughSubject<Void, Never>?
+    
+    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
+        self.cell = cell
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateSnapshot(items: [Cat]) {
+    func updateSnapshot(items: [Item]) {
         self.items = items
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Cat>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.main])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -36,9 +43,7 @@ final class CatsCollectionViewController: UIViewController {
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         view.addSubview(collectionView)
     }
-    private let prefetchLimit: Int
-    private var items = [Cat]()
-    private let loadMoreSubject: PassthroughSubject<Void, Never>?
+    
     private enum Section {
         case main
     }
@@ -46,9 +51,13 @@ final class CatsCollectionViewController: UIViewController {
     private lazy var layout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+        
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1/5))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        
         let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10)
         section.visibleItemsInvalidationHandler = {
             [weak self] visibleItems, _, _ in
             guard let self = self,
@@ -64,18 +73,70 @@ final class CatsCollectionViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(CatCollectionCell.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.register(CollectionViewEmbed.self, forCellWithReuseIdentifier: "MyCollectionViewCell")
         return collectionView
     }()
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Cat> = {
-        let dataSource: UICollectionViewDiffableDataSource<Section, Cat> = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self]
-            collectionView, indexPath, viewModel in
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as? CatCollectionCell
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
+        let dataSource: UICollectionViewDiffableDataSource<Section, Item> = UICollectionViewDiffableDataSource(collectionView: collectionView)
+        { [weak self] collectionView, indexPath, viewModel in
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as? CollectionViewEmbed
             else { fatalError("Cannot create feed cell") }
-            cell.configure(with: self!.items[indexPath.row], parent: self!)
+            //cell.hostedCell = self?.cell(indexPath, (self?.items[indexPath.row])!)
+            cell.embed(in: self!, withView: self?.cell(indexPath, (self?.items[indexPath.row])!))
             return cell
         }
         return dataSource
     }()
+    
+    private class HostCell: UICollectionViewCell {
+        private var hostController: UIHostingController<Cell>?
+        override func prepareForReuse() {
+            if let hostView = hostController?.view {
+                hostView.removeFromSuperview()
+            }
+            hostController = nil
+        }
+        var hostedCell: Cell? {
+            willSet {
+                guard let view = newValue else { return }
+                hostController = UIHostingController(rootView: view, ignoreSafeArea: true)
+                if let hostView = hostController?.view {
+                    hostView.frame = contentView.bounds
+                    hostView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    contentView.addSubview(hostView)
+                }
+            }
+        }
+    }
+    private class CollectionViewEmbed: UICollectionViewCell {
+        private(set) var controller: UIHostingController<Cell>?
+        override func prepareForReuse() {
+            if let hostView = controller?.view {
+                hostView.removeFromSuperview()
+            }
+            controller = nil
+        }
+        func embed(in parent: UIViewController, withView content: Cell?) {
+            guard let content = content else { return }
+            if let controller = self.controller {
+                controller.rootView = content
+                controller.view.layoutIfNeeded()
+            } else {
+                let controller = UIHostingController(rootView: content, ignoreSafeArea: true)
+                parent.addChild(controller)
+                controller.didMove(toParent: parent)
+                self.contentView.addSubview(controller.view)
+                self.controller = controller
+            }
+        }
+        deinit {
+            controller?.willMove(toParent: nil)
+            controller?.view.removeFromSuperview()
+            controller?.removeFromParent()
+            controller = nil
+        }
+    }
 }
+
+

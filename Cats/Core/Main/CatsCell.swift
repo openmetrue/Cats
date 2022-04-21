@@ -26,12 +26,12 @@ struct CatsCell: View {
         }
     }
 }
-
-class CatCollectionCell: CollectionViewEmbed<CatsCell> {
-    func configure(with content: Cat, parent: UIViewController) {
-        embed(in: parent, withView: CatsCell(item: content))
-        controller?.view.frame = self.contentView.bounds
-    }
-}
+//
+//class CatCollectionCell: CollectionViewEmbed<CatsCell> {
+//    func configure(with content: Cat, parent: UIViewController) {
+//        embed(in: parent, withView: CatsCell(item: content))
+//        controller?.view.frame = self.contentView.bounds
+//    }
+//}
 
 

@@ -1,8 +1,8 @@
 //
-//  UIHosting + ext.swift
+//  UIHostingIgnoreSafeArea.swift
 //  Cats
 //
-//  Created by Mark Khmelnitskii on 20.04.2022.
+//  Created by Mark Khmelnitskii on 21.04.2022.
 //
 
 import SwiftUI

@@ -26,11 +26,10 @@
 		B414E72028031F9E00ED19C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E71F28031F9E00ED19C3 /* ContentView.swift */; };
 		B414E7282803421000ED19C3 /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7272803421000ED19C3 /* CatsModel.swift */; };
 		B414E72A2803551600ED19C3 /* BreedesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B414E7292803551600ED19C3 /* BreedesModel.swift */; };
+		B421084B281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
-		B4510FEA28100320007483B1 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4510FE928100320007483B1 /* CollectionView.swift */; };
 		B4510FEE28101D58007483B1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = B4510FED28101D58007483B1 /* NukeUI */; };
-		B4510FF2281036CF007483B1 /* UIHosting + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4510FF1281036CE007483B1 /* UIHosting + ext.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
 		B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C25280832C900105FCC /* CoreDataAPI.swift */; };
 		B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C62C272808388500105FCC /* AsyncImageCached.swift */; };
@@ -73,11 +72,10 @@
 		B414E71F28031F9E00ED19C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B414E7272803421000ED19C3 /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
 		B414E7292803551600ED19C3 /* BreedesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedesModel.swift; sourceTree = "<group>"; };
+		B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingIgnoreSafeArea.swift; sourceTree = "<group>"; };
 		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
-		B4510FE928100320007483B1 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
-		B4510FF1281036CE007483B1 /* UIHosting + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIHosting + ext.swift"; sourceTree = "<group>"; };
 		B4C6268D280456430060C77D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		B4C62C25280832C900105FCC /* CoreDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		B4C62C272808388500105FCC /* AsyncImageCached.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
@@ -155,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				B4C62C272808388500105FCC /* AsyncImageCached.swift */,
-				B4E910602805B080009B8350 /* CollectionViewEmbed.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -238,29 +235,15 @@
 			path = CatsTests;
 			sourceTree = "<group>";
 		};
-		B4510FEB281004ED007483B1 /* NewCollectionType */ = {
-			isa = PBXGroup;
-			children = (
-				B4510FE928100320007483B1 /* CollectionView.swift */,
-			);
-			path = NewCollectionType;
-			sourceTree = "<group>";
-		};
 		B4510FEF28103643007483B1 /* OldCollectionType */ = {
 			isa = PBXGroup;
 			children = (
 				B4E910642805B1C6009B8350 /* CatsCollection.swift */,
 				B4E910662805B22C009B8350 /* CatsCollectionViewController.swift */,
+				B421084A281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift */,
+				B4E910602805B080009B8350 /* CollectionViewEmbed.swift */,
 			);
 			path = OldCollectionType;
-			sourceTree = "<group>";
-		};
-		B4510FF0281036AF007483B1 /* CombinedCollectionType */ = {
-			isa = PBXGroup;
-			children = (
-				B4510FF1281036CE007483B1 /* UIHosting + ext.swift */,
-			);
-			path = CombinedCollectionType;
 			sourceTree = "<group>";
 		};
 		B4C626882804072F0060C77D /* Models */ = {
@@ -285,9 +268,7 @@
 		B4E910682805B2CD009B8350 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
-				B4510FF0281036AF007483B1 /* CombinedCollectionType */,
 				B4510FEF28103643007483B1 /* OldCollectionType */,
-				B4510FEB281004ED007483B1 /* NewCollectionType */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -409,8 +390,6 @@
 			files = (
 				B414E71028031BF700ED19C3 /* API.swift in Sources */,
 				B414E6F628030CAB00ED19C3 /* CatsMain.swift in Sources */,
-				B4510FEA28100320007483B1 /* CollectionView.swift in Sources */,
-				B4510FF2281036CF007483B1 /* UIHosting + ext.swift in Sources */,
 				B4C62C282808388500105FCC /* AsyncImageCached.swift in Sources */,
 				B4E9106F2805EA81009B8350 /* Image+ext.swift in Sources */,
 				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,
@@ -422,6 +401,7 @@
 				B414E6FE280313E000ED19C3 /* CatsDetail.swift in Sources */,
 				B414E71C28031CED00ED19C3 /* CoreDataDelete.swift in Sources */,
 				B414E71A28031CC500ED19C3 /* CoreDataFetch.swift in Sources */,
+				B421084B281142DB001A8B35 /* UIHostingIgnoreSafeArea.swift in Sources */,
 				B4E910632805B0EB009B8350 /* CatsCell.swift in Sources */,
 				B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */,
 				B414E71828031CA600ED19C3 /* CoreDataSave.swift in Sources */,
