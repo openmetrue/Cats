@@ -17,10 +17,10 @@ UIKitCollection(items: cats,
 { indexPath, item in
     CatsCell(item: item, index: indexPath.row)
 }
-.onReceive(viewModel.loadMoreSubject) {
+.onReceive(loadMore) {
     //fetch next page
 }
-.onReceive(viewModel.pullToRefreshSubject) {
+.onReceive(pullToRefresh) {
     //refreshing page
 }
 ```
