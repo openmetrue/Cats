@@ -18,10 +18,10 @@ UIKitCollection(items: cats,
     CatsCell(item: item, index: indexPath.row)
 }
 .onReceive(viewModel.loadMoreSubject) {
-    self.viewModel.fetchNextPageIfPossible()
+    //fetch next page
 }
 .onReceive(viewModel.pullToRefreshSubject) {
-    self.viewModel.refreshItems()
+    //refreshing page
 }
 ```
 
