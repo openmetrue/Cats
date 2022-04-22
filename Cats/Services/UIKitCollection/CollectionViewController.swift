@@ -11,12 +11,12 @@ import SwiftUI
 final class CollectionViewController<Item: Hashable, Cell: View>: UIViewController {
     
     private var items = [Item]()
-    private let prefetchLimit: Int
+    private let prefetchLimit: Int?
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private let pullToRefreshSubject: PassthroughSubject<Void, Never>?
     
-    public init(prefetchLimit: Int, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
+    public init(prefetchLimit: Int? = nil, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.prefetchLimit = prefetchLimit
         self.loadMoreSubject = loadMoreSubject
         self.pullToRefreshSubject = pullToRefreshSubject
@@ -59,9 +59,10 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         section.visibleItemsInvalidationHandler = {
             [weak self] visibleItems, _, _ in
             guard let self = self,
-                  let row = visibleItems.last?.indexPath.row else { return }
-            if self.items.count - self.prefetchLimit > 0,
-               row >= self.items.count - self.prefetchLimit {
+                  let row = visibleItems.last?.indexPath.row,
+                  let prefetchLimit = self.prefetchLimit else { return }
+            if self.items.count - prefetchLimit > 0,
+               row >= self.items.count - prefetchLimit {
                 self.loadMoreSubject?.send()
             }
         }

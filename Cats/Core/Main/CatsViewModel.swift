@@ -23,7 +23,7 @@ final class CatsMainViewModel: ObservableObject {
     public let loadMoreSubject = PassthroughSubject<Void, Never>()
     private var bag = Set<AnyCancellable>()
     
-    private init() {
+    init() {
         setUpFetching()
     }
     

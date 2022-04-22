@@ -21,25 +21,15 @@ struct CatsFavorite: View {
                         Text("add first cat to saved")
                     }
                 case .loaded(let catsDB):
-                    GeometryReader { geo in
-                        ScrollView {
-                            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)) {
-                                ForEach(catsDB, id: \.unicID) { cat in
-                                    NavigationLink(destination: CatsFavoriteDetail(cat: cat)) {
-                                        if let imageData = cat.image,
-                                           let uiimage = UIImage(data: imageData),
-                                           let image = Image(uiImage: uiimage) {
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: geo.size.width/3, height: geo.size.width/3, alignment: .center)
-                                                .clipped()
-                                        }
-                                    }
-                                }
+                    UIKitCollection(items: catsDB) { indexPath, item in Group {
+                        NavigationLink(destination: CatsFavoriteDetail(cat: item)) {
+                            if let imageData = item.image,
+                               let uiimage = UIImage(data: imageData),
+                               let image = Image(uiImage: uiimage) {
+                                image.centerCropped()
                             }
                         }
-                    }
+                    }}
                     .toolbar {
                         Button {
                             viewModel.deleteAll()
