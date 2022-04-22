@@ -38,4 +38,4 @@ UIKitCollection(items: catsDB) { indexPath, item in
 }
 ```
 
-> **Important:** I need help to improve this project, now I have problems with cordata and many other things
+> **Important:** I need help to improve this project, now I have problems with CoreData and many other things
