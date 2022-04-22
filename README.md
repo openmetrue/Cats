@@ -3,7 +3,7 @@ SwiftUI + UICollectionView (with reusable SwiftUI Cell) + Combine + CoreData + I
 
 ### Performance
 
-![Project demo](screenrecordings.gif)
+![Project demo](screenrecording.gif)
 
 
 - project needs to be improved
