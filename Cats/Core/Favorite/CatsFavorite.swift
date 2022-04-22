@@ -21,7 +21,7 @@ struct CatsFavorite: View {
                         Text("add first cat to saved")
                     }
                 case .loaded(let catsDB):
-                    UIKitCollection(items: catsDB) { indexPath, item in Group {
+                    UIKitCollection(items: catsDB) { indexPath, item in
                         NavigationLink(destination: CatsFavoriteDetail(cat: item)) {
                             if let imageData = item.image,
                                let uiimage = UIImage(data: imageData),
@@ -29,7 +29,7 @@ struct CatsFavorite: View {
                                 image.centerCropped()
                             }
                         }
-                    }}
+                    }
                     .toolbar {
                         Button {
                             viewModel.deleteAll()

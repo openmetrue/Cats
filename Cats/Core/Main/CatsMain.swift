@@ -54,4 +54,3 @@ struct CatsMain: View {
         }
     }
 }
-

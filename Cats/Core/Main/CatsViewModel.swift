@@ -47,16 +47,16 @@ final class CatsMainViewModel: ObservableObject {
     public func refreshItems() {
         API.getAllCats(page: page, limit: limit)
             .sink(receiveCompletion: {
-            switch $0 {
-            case .finished:
-                break
-            case .failure(let error):
-                self.state = .error(error.localizedDescription)
-            }
-        }, receiveValue: {
-            self.cats = $0
-            self.page += 1
-        }).store(in: &bag)
+                switch $0 {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state = .error(error.localizedDescription)
+                }
+            }, receiveValue: {
+                self.cats = $0
+                self.page += 1
+            }).store(in: &bag)
     }
     public func getCatsSearch(_ searchText: String) {
         API.searchCats(searchText)
@@ -77,19 +77,18 @@ final class CatsMainViewModel: ObservableObject {
     public func fetchNextPageIfPossible() {
         API.getAllCats(page: page, limit: limit)
             .sink(receiveCompletion: {
-            switch $0 {
-            case .finished:
-                break
-            case .failure(let error):
-                self.state = .error(error.localizedDescription)
-            }
-        }, receiveValue: {
-            self.cats += $0
-            self.page += 1
-        }).store(in: &bag)
+                switch $0 {
+                case .finished:
+                    break
+                case .failure(let error):
+                    self.state = .error(error.localizedDescription)
+                }
+            }, receiveValue: {
+                self.cats += $0
+                self.page += 1
+            }).store(in: &bag)
     }
     enum CatsMainViewState {
         case loading, search, searchEmpty(String), all, error(String)
     }
 }
-
