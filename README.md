@@ -1,10 +1,13 @@
 # Cats
-SwiftUI + UICollectionView (with reusable SwiftUI Cell) + Combine + CoreData + ImageCache (thanks to Vadim @V8tr)
+SwiftUI needs to learn how to save memory. I tried to teach him
+(thanks to Vadim @V8tr)
+> **Important:** I need help to improve this project, now I have problems with CoreData and many other things
 
 ### Performance
 
 ![Project demo](screenrecording.gif)
 
+### Use for your projects!
 You can use a collection with pagination, with pullToRefresh
 ```swift
 public let pullToRefresh = PassthroughSubject<Void, Never>()
@@ -37,5 +40,3 @@ UIKitCollection(items: catsDB) { indexPath, item in
     }
 }
 ```
-
-> **Important:** I need help to improve this project, now I have problems with CoreData and many other things
