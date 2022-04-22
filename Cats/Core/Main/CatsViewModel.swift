@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 final class CatsMainViewModel: ObservableObject {
+    
     @Published private(set) var state: CatsMainViewState = .loading
     @Published private(set) var cats: [Cat] = []
     @Published private(set) var breeds: [Breedes] = []
@@ -20,10 +21,12 @@ final class CatsMainViewModel: ObservableObject {
     
     public let pullToRefreshSubject = PassthroughSubject<Void, Never>()
     public let loadMoreSubject = PassthroughSubject<Void, Never>()
-    public var bag = Set<AnyCancellable>()
-    init() {
+    private var bag = Set<AnyCancellable>()
+    
+    private init() {
         setUpFetching()
     }
+    
     private func setUpFetching() {
         $searchText
             .debounce(for: .milliseconds(500), scheduler: DispatchQueue.main)

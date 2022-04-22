@@ -9,6 +9,7 @@ import Combine
 import SwiftUI
 
 final class CollectionViewController<Item: Hashable, Cell: View>: UIViewController {
+    
     private var items = [Item]()
     private let prefetchLimit: Int
     private let cell: (IndexPath, Item) -> Cell
@@ -21,17 +22,6 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         self.pullToRefreshSubject = pullToRefreshSubject
         self.cell = cell
         super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func updateSnapshot(items: [Item]) {
-        self.items = items
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(items)
-        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     override func viewDidLoad() {
@@ -46,6 +36,14 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     
     private enum Section {
         case main
+    }
+    
+    func updateSnapshot(items: [Item]) {
+        self.items = items
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items)
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private lazy var layout: UICollectionViewCompositionalLayout = {
@@ -117,5 +115,9 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
                 }
             }
         }
+    }
+    
+    required init?(coder _: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

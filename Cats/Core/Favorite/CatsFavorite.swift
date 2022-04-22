@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CatsFavorite: View {
+    
     @ObservedObject var viewModel = CatsFavoriteViewModel()
+    
     var body: some View {
         NavigationView{
             Group {
@@ -51,17 +53,8 @@ struct CatsFavorite: View {
                     ProgressView()
                 }
             }
-            .onAppear {
-                viewModel.fetchCats()
-            }
-            .navigationTitle("Saved cat's")
-            .navigationBarTitleDisplayMode(.inline)
+            .onAppear { viewModel.fetchCats() }
+            .navigationBarTitle("Saved cat's", displayMode: .inline)
         }
-    }
-}
-
-struct CatsFavorite_Previews: PreviewProvider {
-    static var previews: some View {
-        CatsFavorite()
     }
 }

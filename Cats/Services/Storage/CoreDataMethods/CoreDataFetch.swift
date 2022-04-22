@@ -9,18 +9,22 @@ import CoreData
 import Combine
 
 struct CoreDataFetchResultsPublisher<Entity>: Publisher where Entity: NSManagedObject {
+    
     typealias Output = [Entity]
     typealias Failure = NSError
     private let request: NSFetchRequest<Entity>
     private let context: NSManagedObjectContext
+    
     init(request: NSFetchRequest<Entity>, context: NSManagedObjectContext) {
         self.request = request
         self.context = context
     }
+    
     func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = Subscription(subscriber: subscriber, context: context, request: request)
         subscriber.receive(subscription: subscription)
     }
+    
     final class Subscription<S> where S : Subscriber, Failure == S.Failure, Output == S.Input {
         private var subscriber: S?
         private var request: NSFetchRequest<Entity>

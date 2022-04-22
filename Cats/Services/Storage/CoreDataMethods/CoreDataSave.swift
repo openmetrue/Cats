@@ -9,18 +9,22 @@ import CoreData
 import Combine
 
 struct CoreDataSaveModelPublisher: Publisher {
+    
     typealias Output = Bool
     typealias Failure = NSError
     private let action: () -> Void
     private let context: NSManagedObjectContext
+    
     init(action: @escaping () -> Void, context: NSManagedObjectContext) {
         self.action = action
         self.context = context
     }
+    
     func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = Subscription(subscriber: subscriber, context: context, action: action)
         subscriber.receive(subscription: subscription)
     }
+    
     final class Subscription<S> where S : Subscriber, Failure == S.Failure, Output == S.Input {
         private var subscriber: S?
         private let action: () -> Void

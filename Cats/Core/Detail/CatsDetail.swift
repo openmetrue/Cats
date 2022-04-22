@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct CatsDetail: View {
+    
     @ObservedObject var viewModel: CatsDetailViewModel
-    init(breed: Breedes) {
+    
+    public init(breed: Breedes) {
         self.viewModel = CatsDetailViewModel(breed: breed)
     }
-    init(cat: Cat) {
+    
+    public init(cat: Cat) {
         self.viewModel = CatsDetailViewModel(cat: cat)
     }
+    
     var body: some View {
         switch viewModel.state {
         case .loaded(let cat):
@@ -68,9 +72,3 @@ struct CatsDetail: View {
         }
     }
 }
-
-//struct CatsDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatsDetail(breed: "")
-//    }
-//}

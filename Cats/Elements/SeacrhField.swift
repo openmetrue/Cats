@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct SearchField: View {
+    
     @Binding var text: String
     @State private var isButtonShown = false
+    
     var body: some View {
         VStack {
             HStack(spacing: 0) {
@@ -20,8 +22,8 @@ struct SearchField: View {
                     TextField("Search...", text: $text) { (editingChanged) in
                         isButtonShown = editingChanged
                     }
-                        .foregroundColor(.secondary)
-                        .padding(.vertical, 8)
+                    .foregroundColor(.secondary)
+                    .padding(.vertical, 8)
                     if !text.isEmpty {
                         Button(action: {text.removeAll()}){
                             Image(systemName: "xmark.circle.fill")
@@ -29,7 +31,8 @@ struct SearchField: View {
                         .padding(.trailing, 8)
                         .foregroundColor(.gray)
                     }
-                }.background(RoundedRectangle(cornerRadius: 10).fill(Color(.secondarySystemBackground)))
+                }
+                .background(RoundedRectangle(cornerRadius: 10).fill(Color(.secondarySystemBackground)))
                 if isButtonShown {
                     Button(action: {buttonClicked()}) {
                         Text("Cancel")

@@ -9,14 +9,17 @@ import CoreData
 import Combine
 
 struct CoreDataDeleteModelPublisher: Publisher {
+    
     typealias Output = NSBatchDeleteResult
     typealias Failure = NSError
     private let request: NSFetchRequest<NSFetchRequestResult>
     private let context: NSManagedObjectContext
+    
     init(delete request: NSFetchRequest<NSFetchRequestResult>, context: NSManagedObjectContext) {
         self.request = request
         self.context = context
     }
+    
     func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = Subscription(subscriber: subscriber, context: context, request: request)
         subscriber.receive(subscription: subscription)

@@ -9,10 +9,12 @@ import CoreData
 import Combine
 
 struct CoreDataStore {
+    
     var container: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
         return self.container.viewContext
     }
+    
     init(name: String) {
         self.container = NSPersistentContainer(name: name)
         self.container.loadPersistentStores { (storeDescription, error) in

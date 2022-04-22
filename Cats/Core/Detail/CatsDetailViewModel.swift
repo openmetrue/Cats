@@ -10,13 +10,16 @@ import Combine
 import SwiftUI
 
 final class CatsDetailViewModel: ObservableObject {
+    
     @Published private(set) var state: CatsDetailViewState = .loading
     @Published private(set) var saved: Bool = false
     
     private var bag = Set<AnyCancellable>()
+    
     public init(cat: Cat) {
         self.state = .loaded(cat)
     }
+    
     public init(breed: Breedes) {
         loadCat(id: breed.referenceImageID ?? "hBXicehMA")
     }
@@ -36,7 +39,6 @@ final class CatsDetailViewModel: ObservableObject {
     }
     
     public func save(_ cat: Cat) {
-        guard !saved else { return }
         let action: (() -> Void) = {
             let catDB: CatDB = CDAPI.createEntity()
             catDB.unicID = UUID()
@@ -44,13 +46,7 @@ final class CatsDetailViewModel: ObservableObject {
             catDB.url = cat.url
             catDB.width = Int64(cat.width)
             catDB.height = Int64(cat.height)
-//            if let uiImage = self.cache[URL(string: cat.url)!] {// self.cache.object(forKey: URL(string: cat.url)! as NSURL) {
-//                catDB.image = uiImage.jpegData(compressionQuality: 1)
-//                print("saved from cache")
-//            } else {
             catDB.image = try? Data(contentsOf: URL(string: cat.url)!)
-            //    print("saved from web")
-            //}
             var breedsDB: [BreedDB] = []
             for breed in cat.breeds {
                 let breedDB: BreedDB = CDAPI.createEntity()
@@ -71,6 +67,7 @@ final class CatsDetailViewModel: ObservableObject {
             catDB.breedDB = NSSet(array: breedsDB)
             catDB.categoryDB = NSSet(array: categoriesDB)
         }
+        
         CDAPI.publicher(save: action)
             .sink {
                 switch $0 {
@@ -86,8 +83,7 @@ final class CatsDetailViewModel: ObservableObject {
                 case false:
                     print("DB error")
                 }
-            }
-            .store(in: &bag)
+            }.store(in: &bag)
     }
     
     enum CatsDetailViewState {

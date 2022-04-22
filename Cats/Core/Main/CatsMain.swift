@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CatsMain: View {
+    
     @StateObject var viewModel = CatsMainViewModel()
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -46,18 +48,10 @@ struct CatsMain: View {
                     }
                 }
             }
-            
-            //.searchable(text: $viewModel.searchText)
-            .navigationTitle("Сat's observer")
+            .navigationBarTitle("Сat's observer", displayMode: .inline)
             .navigationBarTitleDisplayMode(.inline)
             .environment(\.disableAutocorrection, true)
         }
     }
 }
-
-//struct CatsMain_Previews: PreviewProvider {
-//    static var previews: some View {
-//        CatsMain(, selectedItem: сat)
-//    }
-//}
 

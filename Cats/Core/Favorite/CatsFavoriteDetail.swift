@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct CatsFavoriteDetail: View {
-    let cat: CatDB
+    
+    public let cat: CatDB
+    
     var body: some View {
         VStack {
             if let imageData = cat.image,
                let uiimage = UIImage(data: imageData),
                let image = Image(uiImage: uiimage) {
-                image
-                    .centerCropped()
+                image.centerCropped()
             }
             List {
                 Text("Cat's ID: \(cat.id!)")

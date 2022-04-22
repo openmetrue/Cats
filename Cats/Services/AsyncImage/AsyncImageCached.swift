@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct AsyncImageCached<I: View, P: View>: View {
+    
     @StateObject private var loader: ImageLoader
     private let placeholder: () -> P
     private var url: String

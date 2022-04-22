@@ -11,6 +11,7 @@ struct Breedes: Codable, Identifiable {
     let id, name: String
     let countryCode: String?
     let referenceImageID: String?
+    
     enum CodingKeys: String, CodingKey {
         case id, name
         case countryCode = "country_code"

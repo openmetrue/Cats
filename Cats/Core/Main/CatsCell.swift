@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct CatsCell: View {
-    var item: Cat
-    var index: Int
+    
+    public var item: Cat
+    public var index: Int
+    
     var body: some View {
         NavigationLink {
             CatsDetail(cat: item)
@@ -20,7 +22,6 @@ struct CatsCell: View {
                 } placeholder: {
                     ProgressView()
                 }
-                //Text("\(index)")
             }
         }
     }
