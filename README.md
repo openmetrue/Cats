@@ -1,4 +1,4 @@
-# Сats don't need to save RAM
+# Сats need more RAM
 SwiftUI needs to learn how to save memory. I decided to teach him to work with reusable.
 (special thanks to Vadim @V8tr)
 > **Important:** I need help to improve this project!
