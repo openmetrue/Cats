@@ -33,7 +33,7 @@ Or just as a replacement SwiftUI ForEach!
 UIKitCollection(items: catsDB) { indexPath, item in
     NavigationLink(destination: CatsFavoriteDetail(cat: item)) {
         AsyncImageCached(url: item.url) { image in
-            image.centerCropped()
+            image.resizable()
         } placeholder: {
             ProgressView()
         }
