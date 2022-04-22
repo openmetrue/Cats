@@ -4,7 +4,7 @@ SwiftUI needs to learn how to save memory. I decided to teach him to work with r
 > **Important:** I need help to improve this project, now I have problems with CoreData and many other things
 
 ### Performance
-* GeometryReader in each view + medium resolution pictures
+* GeometryReader in each cell + medium resolution pictures
 
 ![Project demo](screenrecording.gif)
 
