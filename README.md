@@ -29,7 +29,7 @@ UIKitCollection(items: cats,
 }
 ```
 
-Or just as a replacement SwiftUI ForEach!
+Or just as a replacement SwiftUI ForEach
 ```swift
 UIKitCollection(items: catsDB) { indexPath, item in
     NavigationLink(destination: CatsFavoriteDetail(cat: item)) {
