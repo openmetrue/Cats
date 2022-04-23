@@ -1,7 +1,7 @@
 # Do cats love RAM?
 SwiftUI needs to learn how to save memory. I decided to teach him to work with reusable.
 (special thanks to Vadim @V8tr)
-> **Important:** I need help to improve this project!
+> **Important:** I need help to improve this project! Сode review or implementing sui tricks to improve performance will be very helpful
 
 ### Performance (Apple A12)
 * GeometryReader in each cell + medium resolution pictures + 500mb NSCache limit
