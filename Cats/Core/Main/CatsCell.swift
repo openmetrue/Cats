@@ -16,12 +16,10 @@ struct CatsCell: View {
         NavigationLink {
             CatsDetail(cat: item)
         } label: {
-            VStack {
-                AsyncImageCached(url: item.url) { image in
-                    image.centerCropped()
-                } placeholder: {
-                    ProgressView()
-                }
+            AsyncImageCached(url: item.url) { image in
+                image.centerCropped()
+            } placeholder: {
+                ProgressView()
             }
         }
     }

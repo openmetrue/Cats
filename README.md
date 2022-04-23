@@ -8,6 +8,10 @@ SwiftUI needs to learn how to save memory. I decided to teach him to work with r
 
 ![Project demo](screenrecording.gif)
 
+* Using NukeUI, with old conditions
+
+![Project demo NukeUI](screenrecordingNukeUI.gif)
+
 ### Use for your projects!
 You can use a collection with pagination, with pullToRefresh
 ```swift
