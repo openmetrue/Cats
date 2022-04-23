@@ -3,8 +3,8 @@ SwiftUI needs to learn how to save memory. I decided to teach him to work with r
 (special thanks to Vadim @V8tr)
 > **Important:** I need help to improve this project!
 
-### Performance
-* GeometryReader in each cell + medium resolution pictures (Apple A12) + 500mb total cost limit
+### Performance (Apple A12)
+* GeometryReader in each cell + medium resolution pictures + 500mb total cost limit
 
 ![Project demo](screenrecording.gif)
 
