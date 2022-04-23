@@ -32,6 +32,7 @@
 		B421086B2811B841001A8B35 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42108672811B841001A8B35 /* ImageLoader.swift */; };
 		B421086C2811B841001A8B35 /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42108682811B841001A8B35 /* EnvironmentValues+ImageCache.swift */; };
 		B421086D2811B841001A8B35 /* AsyncImageCached.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42108692811B841001A8B35 /* AsyncImageCached.swift */; };
+		B421087A28143A71001A8B35 /* LRUCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421087928143A71001A8B35 /* LRUCaching.swift */; };
 		B43415102804A744000EA2BF /* CatsFavoriteDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */; };
 		B43415182804ADF6000EA2BF /* CatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43415172804ADF6000EA2BF /* CatsTests.swift */; };
 		B4C6268E280456430060C77D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4C6268C280456430060C77D /* Model.xcdatamodeld */; };
@@ -80,6 +81,7 @@
 		B42108672811B841001A8B35 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		B42108682811B841001A8B35 /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
 		B42108692811B841001A8B35 /* AsyncImageCached.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageCached.swift; sourceTree = "<group>"; };
+		B421087928143A71001A8B35 /* LRUCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LRUCaching.swift; sourceTree = "<group>"; };
 		B434150F2804A744000EA2BF /* CatsFavoriteDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsFavoriteDetail.swift; sourceTree = "<group>"; };
 		B43415152804ADF6000EA2BF /* CatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43415172804ADF6000EA2BF /* CatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsTests.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		B42108652811B841001A8B35 /* AsyncImage */ = {
 			isa = PBXGroup;
 			children = (
+				B421087928143A71001A8B35 /* LRUCaching.swift */,
 				B42108662811B841001A8B35 /* ImageCache.swift */,
 				B42108672811B841001A8B35 /* ImageLoader.swift */,
 				B42108682811B841001A8B35 /* EnvironmentValues+ImageCache.swift */,
@@ -395,6 +398,7 @@
 			files = (
 				B414E71028031BF700ED19C3 /* API.swift in Sources */,
 				B414E6F628030CAB00ED19C3 /* CatsMain.swift in Sources */,
+				B421087A28143A71001A8B35 /* LRUCaching.swift in Sources */,
 				B421086B2811B841001A8B35 /* ImageLoader.swift in Sources */,
 				B4E9106F2805EA81009B8350 /* Image+ext.swift in Sources */,
 				B4C62C26280832C900105FCC /* CoreDataAPI.swift in Sources */,

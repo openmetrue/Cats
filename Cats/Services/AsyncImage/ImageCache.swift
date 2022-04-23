@@ -9,19 +9,19 @@
 import UIKit
 
 protocol ImageCache {
-    subscript(_ url: URL) -> UIImage? { get set }
+    subscript(_ url: URL) -> Data? { get set }
 }
 
 struct TemporaryImageCache: ImageCache {
-    private let cache: NSCache<NSURL, UIImage> = {
-        let cache = NSCache<NSURL, UIImage>()
-        cache.countLimit = 50 // items limit
-        cache.totalCostLimit = 1024 * 1024 * 512 // memory limit
+    private let cache: LRUCache<NSURL, Data> = {
+        let cache = LRUCache<NSURL, Data>()
+        cache.countLimit = 100 // items limit
+        cache.totalCostLimit = 1024 * 1024 * 256 // memory limit
         return cache
     }()
     
-    subscript(_ key: URL) -> UIImage? {
-        get { cache.object(forKey: key as NSURL) }
-        set { newValue == nil ? cache.removeObject(forKey: key as NSURL) : cache.setObject(newValue!, forKey: key as NSURL) }
+    subscript(_ key: URL) -> Data? {
+        get { cache.value(forKey: key as NSURL) }
+        set { cache.setValue(newValue!, forKey: key as NSURL) }
     }
 }

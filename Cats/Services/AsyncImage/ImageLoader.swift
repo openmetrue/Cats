@@ -31,8 +31,8 @@ class ImageLoader: ObservableObject {
     func load() {
         guard !isLoading, let url = url else { return }
         
-        if let image = cache?[url] {
-            self.image = image
+        if let data = cache?[url] {
+            self.image = UIImage(data: data)
             return
         }
         
@@ -62,6 +62,6 @@ class ImageLoader: ObservableObject {
     
     private func cache(_ image: UIImage?) {
         guard let url = url else { return }
-        image.map { cache?[url] = $0 }
+        image.map { cache?[url] = $0.jpegData(compressionQuality: 0.8) }
     }
 }
