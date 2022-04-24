@@ -206,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				B4E910682805B2CD009B8350 /* UIKitCollection */,
-				B42108652811B841001A8B35 /* AsyncImage */,
+				B42108652811B841001A8B35 /* AsyncImageCached */,
 				B414E71328031C3B00ED19C3 /* Network */,
 				B414E71628031C7300ED19C3 /* Storage */,
 			);
@@ -234,7 +234,7 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		B42108652811B841001A8B35 /* AsyncImage */ = {
+		B42108652811B841001A8B35 /* AsyncImageCached */ = {
 			isa = PBXGroup;
 			children = (
 				B421087928143A71001A8B35 /* LRUCaching.swift */,
@@ -243,7 +243,7 @@
 				B42108682811B841001A8B35 /* EnvironmentValues+ImageCache.swift */,
 				B42108692811B841001A8B35 /* AsyncImageCached.swift */,
 			);
-			path = AsyncImage;
+			path = AsyncImageCached;
 			sourceTree = "<group>";
 		};
 		B43415162804ADF6000EA2BF /* CatsTests */ = {
