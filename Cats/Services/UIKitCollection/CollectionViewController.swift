@@ -15,6 +15,7 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     private let cell: (IndexPath, Item) -> Cell
     private let loadMoreSubject: PassthroughSubject<Void, Never>?
     private let pullToRefreshSubject: PassthroughSubject<Void, Never>?
+    private var isPaginating = false
     
     public init(prefetchLimit: Int? = nil, loadMoreSubject: PassthroughSubject<Void, Never>? = nil, pullToRefreshSubject: PassthroughSubject<Void, Never>? = nil, @ViewBuilder cell: @escaping (IndexPath, Item) -> Cell) {
         self.prefetchLimit = prefetchLimit
@@ -39,6 +40,7 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
     }
     
     func updateSnapshot(items: [Item]) {
+        isPaginating = false
         self.items = items
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         snapshot.appendSections([.main])
@@ -59,10 +61,12 @@ final class CollectionViewController<Item: Hashable, Cell: View>: UIViewControll
         section.visibleItemsInvalidationHandler = {
             [weak self] visibleItems, _, _ in
             guard let self = self,
-                  let row = visibleItems.last?.indexPath.row,
-                  let prefetchLimit = self.prefetchLimit else { return }
+                  let prefetchLimit = self.prefetchLimit,
+                let row = visibleItems.last?.indexPath.row else { return }
             if self.items.count - prefetchLimit > 0,
-               row >= self.items.count - prefetchLimit {
+                row >= self.items.count - prefetchLimit {
+                guard !self.isPaginating else { return }
+                self.isPaginating = true
                 self.loadMoreSubject?.send()
             }
         }

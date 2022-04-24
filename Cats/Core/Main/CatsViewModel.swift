@@ -55,7 +55,7 @@ final class CatsMainViewModel: ObservableObject {
                 }
             }, receiveValue: {
                 self.cats = $0
-                self.page += 1
+                self.page = 0
             }).store(in: &bag)
     }
     public func getCatsSearch(_ searchText: String) {
