@@ -1,4 +1,5 @@
 # Do cats love RAM?
+
 SwiftUI needs to learn how to save memory. I decided to teach him to work with reusable.
 
 > **Important:** I need help to improve this project! Сode review or implementing sui tricks to improve performance will be very helpful
@@ -12,7 +13,7 @@ SwiftUI needs to learn how to save memory. I decided to teach him to work with r
 
 ![Project demo NukeUI](screenrecordingNukeUI.gif)
 
-### Use for your projects!
+### Get the full power of UIKit collections for your projects!
 You can use a collection with pagination, with pullToRefresh
 ```swift
 public let pullToRefresh = PassthroughSubject<Void, Never>()
