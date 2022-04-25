@@ -1,6 +1,6 @@
 # Do cats love RAM?
 
-SwiftUI needs to learn how to save memory. I decided to teach him to work with reusable.
+Get the full power of UIKit collections for your SwiftUI projects!
 
 > **Important:** I need help to improve this project! Сode review or implementing sui tricks to improve performance will be very helpful
 
